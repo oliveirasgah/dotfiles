@@ -1,0 +1,15 @@
+bibata-cursor-theme
+brave-bin
+claude-code
+crush-bin
+depot-tools-git
+httpdirfs
+jmtpfs
+lmstudio
+oh-my-posh
+pgadmin4-bin
+postman-bin
+proton-ge-custom-bin
+simple-mtpfs
+unionfs-fuse
+wlogout

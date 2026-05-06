@@ -1,0 +1,5 @@
+^/README\.md$
+^/bootstrap
+^/\.git
+^/\.gitignore$
+^/\.stow-local-ignore$
