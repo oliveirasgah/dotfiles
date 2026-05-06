@@ -1,0 +1,170 @@
+@import "mocha.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-family: FontAwesome, "Museo Moderno", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#waybar {
+  background-color: transparent;
+  color: @text;
+}
+
+#waybar.empty #window {
+  background-color: transparent;
+}
+
+#window,
+#workspaces,
+#system,
+#tray {
+  background-color: @surface0;
+  margin: 8px 0;
+  border-radius: 15px;
+  padding: 2px 5px;
+}
+
+#workspaces button {
+  border-radius: 15px;
+  background: transparent;
+  color: @blue;
+  padding: 0 0.3rem;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+}
+
+#workspaces button.active {
+  color: @green;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.urgent {
+  transition: all 0.2s ease-in-out;
+  color: @blue;
+  background-color: @red-button;
+  animation: blink-color 1s linear 0.3s infinite;
+}
+
+@keyframes blink-color {
+  0% {
+    color: @blue;
+    background-color: @red-button;
+  }
+
+  50% {
+    background-color: @blue-button;
+    color: @red;
+  }
+
+  100% {
+    color: @blue;
+    background-color: @red-button;
+  }
+}
+
+#tray {
+  margin-right: 3px;
+  padding: 2px 7px;
+}
+
+#pulseaudio.output,
+#pulseaudio.input,
+#pulseaudio-slider {
+  padding: 2px 5px;
+}
+
+#pulseaudio.output {
+  color: @green;
+  padding: 2px 7px 2px 5px;
+}
+
+#pulseaudio.input {
+  color: @lavender;
+}
+
+#pulseaudio.output.muted {
+  padding: 2px 2px;
+  color: @red;
+}
+
+#pulseaudio.input.source-muted {
+  padding: 2px 9px 2px 1px;
+  color: @red;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0;
+  min-width: 0;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+  min-height: 10px;
+  min-width: 100px;
+  border-radius: 5px;
+  background-color: @surface2;
+}
+
+#pulseaudio-slider highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background-color: @sapphire;
+}
+
+#pulseaudio #output {
+  color: green;
+}
+
+#language {
+  color: @pink;
+  margin-left: 3px;
+}
+
+#custom-fcitx5 {
+  margin-left: 1px;
+  font-size: 16px;
+}
+
+#custom-fcitx5.active {
+  color: @yellow;
+  text-shadow: 0 0 3px @yellow;
+}
+
+#custom-fcitx5.inactive {
+  color: @surface2;
+}
+
+#cpu {
+  margin-right: 7px;
+  margin-left: 5px;
+  font-family: "Hack Nerd Font", sans-serif;
+}
+
+#memory {
+  margin-right: 5px;
+  color: @yellow;
+}
+
+#clock {
+  margin-right: 3px;
+}
+
+.modules-left {
+  margin-left: 5px;
+}
+
+.modules-right {
+  margin-right: 5px;
+}

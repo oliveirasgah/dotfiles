@@ -1,0 +1,47 @@
+# Global
+max-visible=5
+sort=-time
+layer=overlay
+anchor=top-right
+output=DP-1
+
+# Dimensions
+width=380
+height=130
+margin=10
+padding=5
+border-size=2
+border-radius=8
+
+# Timing
+default-timeout=5000
+ignore-timeout=0
+
+# Colors
+background-color=#1e1e2edd
+text-color=#cdd6f4ff
+border-color=#cba6f7ff
+progress-color=over #313244ff
+
+# Typography
+font=sans-serif
+
+# Icons
+icons=1
+max-icon-size=48
+
+# Urgency: low
+[urgency=low]
+border-color=#89b4faff
+default-timeout=3000
+
+# Urgency: normal
+[urgency=normal]
+border-color=#cba6f7ff
+default-timeout=5000
+
+# Urgency: high
+[urgency=high]
+border-color=#f38ba8ff
+text-color=#f38ba8ff
+default-timeout=0

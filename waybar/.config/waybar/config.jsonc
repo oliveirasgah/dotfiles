@@ -1,0 +1,240 @@
+[
+  {
+    "output": "DP-1",
+    "modules-left": [
+      "hyprland/window"
+    ],
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "tray",
+      "group/system"
+    ],
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "default": "○",
+        "active": ""
+      },
+      "all-outputs": false,
+      "persistent-workspaces": {
+        "DP-1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "HDMI-A-1": [
+          10
+        ]
+      }
+    },
+    "group/system": {
+      "orientation": "horizontal",
+      "modules": [
+        "group/sound",
+        "hyprland/language",
+        "custom/fcitx5",
+        "cpu",
+        "memory",
+        "clock"
+      ]
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 3
+    },
+    "group/sound": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "pulseaudio#output",
+        "pulseaudio#input",
+        "pulseaudio/slider"
+      ]
+    },
+    "pulseaudio/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": ""
+    },
+    "pulseaudio#output": {
+      "format": "{icon}",
+      "format-muted": "",
+      "format-icons": {
+        "default": [
+          ""
+        ]
+      },
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pavucontrol -t 3"
+    },
+    "pulseaudio#input": {
+      "format": "{format_source}",
+      "format-source": "",
+      "format-source-muted": "",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pavucontrol -t 4",
+      "on-scroll-up": "",
+      "on-scroll-down": ""
+    },
+    "hyprland/language": {
+      "format": "⌨ {}"
+    },
+    "custom/fcitx5": {
+      "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
+      "format": "{}",
+      "return-type": "json",
+      "on-click": "fcitx5-remote -t"
+    },
+    "cpu": {
+      "interval": 1,
+      "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+      "format-icons": [
+        "<span color='#a6e3a1'>▁</span>", // green
+        "<span color='#89b4fa'>▂</span>", // blue
+        "<span color='#8839ef'>▃</span>", // mauve
+        "<span color='#f5e0dc'>▄</span>", // rosewater
+        "<span color='#f9e2af'>▅</span>", // yellow
+        "<span color='#fab387'>▆</span>", // peach
+        "<span color='#f2cdcd'>▇</span>", // flamingo
+        "<span color='#f38ba8'>█</span>" // red
+      ],
+      "on-click": "alacritty --class float-general -e btop"
+    },
+    "memory": {
+      "interval": 1,
+      "format": " {}%",
+      "on-click": "alacritty --class float-general -e btop"
+    },
+    "clock": {
+      "format": " {:%A, %B %d, %Y  %R}",
+      "format-alt": " {:%R}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    }
+  },
+  {
+    "output": "HDMI-A-1",
+    "layer": "bottom",
+    "position": "bottom",
+    "modules-left": [
+      "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "tray",
+      "group/system"
+    ],
+    "group/system": {
+      "orientation": "horizontal",
+      "modules": [
+        "group/sound",
+        "hyprland/language",
+        "custom/fcitx5",
+        "clock"
+      ]
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 3
+    },
+    "group/sound": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "pulseaudio#output",
+        "pulseaudio#input",
+        "pulseaudio/slider"
+      ]
+    },
+    "pulseaudio/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": ""
+    },
+    "pulseaudio#output": {
+      "format": "{icon}",
+      "format-muted": "",
+      "format-icons": {
+        "default": [
+          ""
+        ]
+      },
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pavucontrol -t 3"
+    },
+    "pulseaudio#input": {
+      "format": "{format_source}",
+      "format-source": "",
+      "format-source-muted": "",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pavucontrol -t 4",
+      "on-scroll-up": "",
+      "on-scroll-down": ""
+    },
+    "hyprland/language": {
+      "format": "⌨ {}"
+    },
+    "custom/fcitx5": {
+      "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
+      "format": "{}",
+      "return-type": "json",
+      "on-click": "fcitx5-remote -t"
+    },
+    "clock": {
+      "format": " {:%A, %B %d, %Y  %R}",
+      "format-alt": " {:%R}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    }
+  }
+]
