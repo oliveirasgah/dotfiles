@@ -1,0 +1,1 @@
+general.import = ["~/.config/alacritty/terminal.toml", "~/.config/alacritty/window.toml", "~/.config/alacritty/font.toml", "~/.config/alacritty/colorscheme.toml"]
