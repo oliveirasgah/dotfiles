@@ -1,0 +1,17 @@
+# Execute rbenv init
+eval "$(rbenv init - --no-rehash bash)"
+
+# Set Flutter configuration
+export FLUTTER_ROOT="/opt/flutter"
+export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_AVD_HOME="$HOME/.android/avd"
+export JAVA_HOME="/usr/lib/jvm/java-25-openjdk"
+export JAVA_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED"
+
+export PATH="$PATH:$FLUTTER_ROOT/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
+
+# Set Anthropic API key
+#export ANTHROPIC_API_KEY="..."
