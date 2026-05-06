@@ -1,5 +1,5 @@
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [fetch]
 	prune = true
 [include]
