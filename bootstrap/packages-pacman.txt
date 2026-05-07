@@ -125,3 +125,4 @@ xdg-desktop-portal-wlr
 yazi
 zellij
 zip
+zsh
