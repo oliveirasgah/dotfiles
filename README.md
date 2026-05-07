@@ -18,8 +18,9 @@ The script:
 2. Installs `yay` if missing (clones `yay-bin` from AUR, builds, installs).
 3. Installs everything in `bootstrap/packages-pacman.txt` via `pacman`.
 4. Installs everything in `bootstrap/packages-aur.txt` via `yay`.
-5. Symlinks every Stow package into `$HOME` (`stow -t $HOME bash git nvim …`).
-6. Prints a post-install checklist.
+5. Symlinks every Stow package into `$HOME` (`stow -t $HOME zsh git nvim …`).
+6. Sets your login shell to `zsh` via `chsh` (only if it isn't already).
+7. Prints a post-install checklist.
 
 The script is idempotent — re-running it is a no-op once everything is in place.
 
@@ -41,7 +42,7 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 
 | Package    | Symlinks |
 |------------|----------|
-| `bash`     | `~/.bashrc`, `~/.bash_profile`, `~/.bash_logout`, `~/.xprofile`, `~/.yarnrc` |
+| `zsh`      | `~/.zshrc`, `~/.zprofile`, `~/.zlogout`, `~/.xprofile` |
 | `git`      | `~/.gitconfig` (identity loaded from `~/.gitconfig.local`) |
 | `nvim`     | `~/.config/nvim/` |
 | `alacritty`| `~/.config/alacritty/` |
@@ -53,8 +54,8 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 | `btop`     | `~/.config/btop/` |
 | `fastfetch`| `~/.config/fastfetch/` |
 
-Add only what you want: `cd ~/dotfiles && stow bash git nvim`.
-Remove a package: `stow -D bash`.
+Add only what you want: `cd ~/dotfiles && stow zsh git nvim`.
+Remove a package: `stow -D zsh`.
 
 ## Snapshot vs install lists
 
