@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STOW_PACKAGES=(bash git nvim alacritty hypr waybar mako fuzzel ohmyposh btop fastfetch)
+STOW_PACKAGES=(zsh git nvim alacritty hypr waybar mako fuzzel ohmyposh btop fastfetch)
 
 log()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 warn() { printf '\033[1;33m==>\033[0m %s\n' "$*" >&2; }
@@ -65,6 +65,22 @@ stow_all() {
 	done
 }
 
+ensure_login_shell_zsh() {
+	local zsh_path=/usr/bin/zsh
+	if [[ ! -x $zsh_path ]]; then
+		warn "zsh not found at $zsh_path; skipping login-shell change"
+		return
+	fi
+	local current
+	current="$(getent passwd "$USER" | cut -d: -f7)"
+	if [[ $current == "$zsh_path" ]]; then
+		log "Login shell already zsh"
+		return
+	fi
+	log "Setting login shell to zsh (you may be prompted for your password)"
+	chsh -s "$zsh_path"
+}
+
 print_post_install() {
 	cat <<-EOF
 
@@ -92,6 +108,7 @@ main() {
 	install_pacman
 	install_aur
 	stow_all
+	ensure_login_shell_zsh
 	print_post_install
 }
 
