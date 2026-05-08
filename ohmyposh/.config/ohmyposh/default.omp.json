@@ -16,7 +16,7 @@
     "blue": "#6272a4"
   },
   "transient_prompt": {
-    "template": "  ❯❯ {{ .AbsolutePWD }} : ",
+    "template": "  => {{ .AbsolutePWD }} : ",
     "foreground": "p:fg",
     "background": "transparent",
     "newline": true
@@ -24,7 +24,7 @@
   "upgrade": {
     "auto": false,
     "interval": "168h",
-    "notice": true
+    "notice": false
   },
   "blocks": [
     {
