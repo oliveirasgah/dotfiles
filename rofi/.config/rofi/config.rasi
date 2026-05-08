@@ -1,0 +1,36 @@
+/**
+ * Author       : Gabriel
+ * Github       : @oliveirasgah
+ * Rofi Version : 2.0.0
+ **/
+
+@theme "~/.config/rofi/theme.rasi"
+
+configuration {
+    /*---------- Modes ----------*/
+    modi:                "drun,run,filebrowser,window";
+
+    /*---------- Icons ----------*/
+    show-icons:          true;
+    icon-theme:          "Papirus";
+
+    /*---------- Search ----------*/
+    matching:            "normal";
+    tokenize:            true;
+    normalize-match:     true;
+    cycle:               true;
+
+    /*---------- Drun ----------*/
+    drun-match-fields:   "name,generic,exec,categories,keywords";
+
+    /*---------- History ----------*/
+    history: false;
+
+    /*---------- Misc ----------*/
+    click-to-exit:       true;
+
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+}

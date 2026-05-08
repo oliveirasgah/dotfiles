@@ -1,0 +1,130 @@
+/**
+ * Author       : Gabriel
+ * Github       : @oliveirasgah
+ * Rofi Version : 2.0.0
+ * Theme        : Catppuccin Mocha (adapted from adi1090x type-5/style-4)
+ **/
+
+@import "colors.rasi"
+
+* {
+    font: "Noto Sans 11";
+}
+
+configuration {
+    display-drun:        "";
+    display-run:         "";
+    display-filebrowser: "";
+    display-window:      "";
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    width:            800px;
+    border-radius:    20px;
+    background-color: @base;
+    cursor:           "default";
+}
+
+mainbox {
+    spacing:          25px;
+    padding:          50px;
+    background-color: transparent;
+    children:         [ "inputbar", "listview", "mode-switcher" ];
+}
+
+inputbar {
+    spacing:          0px;
+    margin:           0px 200px;
+    padding:          5px;
+    border:           1px;
+    border-radius:    100%;
+    border-color:     @overlay0;
+    background-color: transparent;
+    children:         [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    expand:           false;
+    padding:          8px 16px 8px 12px;
+    border-radius:    100%;
+    background-color: @lavender;
+    text-color:       @base;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+    str:              "";
+}
+
+entry {
+    padding:           8px 12px;
+    background-color:  transparent;
+    text-color:        @text;
+    cursor:            text;
+    placeholder:       "Search";
+    placeholder-color: @overlay1;
+    vertical-align:    0.5;
+    horizontal-align:  0.0;
+}
+
+listview {
+    columns:          2;
+    lines:            10;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    fixed-height:     true;
+    fixed-columns:    true;
+    spacing:          10px;
+    background-color: transparent;
+    cursor:           "default";
+}
+
+element {
+    spacing:          10px;
+    padding:          5px;
+    border-radius:    100%;
+    background-color: transparent;
+    text-color:       @subtext0;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-image: linear-gradient(to right, #45475A, #313244);
+    text-color:       @mauve;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             24px;
+    cursor:           inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
+
+mode-switcher {
+    expand:           false;
+    spacing:          0px;
+    margin:           0px 200px;
+    padding:          12px;
+    border-radius:    100%;
+    background-color: @surface0;
+}
+
+button {
+    background-color: inherit;
+    text-color:       @subtext0;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: inherit;
+    text-color:       @peach;
+}

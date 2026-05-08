@@ -1,0 +1,48 @@
+/**
+ * Author       : Gabriel
+ * Github       : @oliveirasgah
+ * Rofi Version : 2.0.0
+ * Palette      : Catppuccin Mocha — https://catppuccin.com/palette
+ **/
+
+* {
+    /* Surfaces */
+    base:           #1E1E2EFF;
+    mantle:         #181825FF;
+    crust:          #11111BFF;
+    surface0:       #313244FF;
+    surface1:       #45475AFF;
+    surface2:       #585B70FF;
+
+    /* Text */
+    text:           #CDD6F4FF;
+    subtext1:       #BAC2DEFF;
+    subtext0:       #A6ADC8FF;
+    overlay2:       #9399B2FF;
+    overlay1:       #7F849CFF;
+    overlay0:       #6C7086FF;
+
+    /* Accents */
+    rosewater:      #F5E0DCFF;
+    flamingo:       #F2CDCDFF;
+    pink:           #F5C2E7FF;
+    mauve:          #CBA6F7FF;
+    red:            #F38BA8FF;
+    maroon:         #EBA0ACFF;
+    peach:          #FAB387FF;
+    yellow:         #F9E2AFFF;
+    green:          #A6E3A1FF;
+    teal:           #94E2D5FF;
+    sky:            #89DCEBFF;
+    sapphire:       #74C7ECFF;
+    blue:           #89B4FAFF;
+    lavender:       #B4BEFEFF;
+
+    /* Theme slots — change accent here */
+    background:     @base;
+    background-alt: @surface0;
+    foreground:     @text;
+    selected:       @mauve;
+    active:         @green;
+    urgent:         @red;
+}
