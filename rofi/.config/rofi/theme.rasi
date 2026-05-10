@@ -46,8 +46,9 @@ inputbar {
 }
 
 textbox-prompt-colon {
+    font: "FiraCode Nerd Font 11";
     expand:           false;
-    padding:          8px 16px 8px 12px;
+    padding:          8px 17px 8px 12px;
     border-radius:    100%;
     background-color: @lavender;
     text-color:       @base;
