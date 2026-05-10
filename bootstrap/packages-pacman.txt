@@ -37,6 +37,7 @@ hyprshot
 imagemagick
 imv
 jdk-openjdk
+kitty
 krita
 lib32-gamemode
 libqalculate

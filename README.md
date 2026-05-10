@@ -45,6 +45,7 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 | `zsh`      | `~/.zshrc`, `~/.zprofile`, `~/.zlogout`, `~/.xprofile` |
 | `git`      | `~/.gitconfig` (identity loaded from `~/.gitconfig.local`) |
 | `nvim`     | `~/.config/nvim/` |
+| `kitty`    | `~/.config/kitty/` |
 | `hypr`     | `~/.config/hypr/` |
 | `waybar`   | `~/.config/waybar/` |
 | `mako`     | `~/.config/mako/` |

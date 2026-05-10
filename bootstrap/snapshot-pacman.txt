@@ -43,6 +43,7 @@ imagemagick
 imv
 intel-ucode
 jdk-openjdk
+kitty
 krita
 less
 lib32-gamemode
