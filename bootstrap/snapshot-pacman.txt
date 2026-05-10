@@ -1,5 +1,4 @@
 7zip
-alacritty
 android-tools
 anki
 base

@@ -110,12 +110,12 @@
         "<span color='#f2cdcd'>▇</span>", // flamingo
         "<span color='#f38ba8'>█</span>" // red
       ],
-      "on-click": "alacritty --class float-general -e btop"
+      "on-click": "kitty --class float-general -e btop"
     },
     "memory": {
       "interval": 1,
       "format": " {}%",
-      "on-click": "alacritty --class float-general -e btop"
+      "on-click": "kitty --class float-general -e btop"
     },
     "clock": {
       "format": " {:%A, %B %d, %Y  %R}",

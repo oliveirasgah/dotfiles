@@ -1,6 +1,0 @@
-general.import = ["~/.config/alacritty/terminal.toml", "~/.config/alacritty/window.toml", "~/.config/alacritty/font.toml", "~/.config/alacritty/colorscheme.toml"]
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
