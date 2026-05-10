@@ -131,5 +131,4 @@ wlr-randr
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
 yazi
-zellij
 zip
