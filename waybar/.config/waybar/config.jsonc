@@ -38,6 +38,7 @@
     "group/system": {
       "orientation": "horizontal",
       "modules": [
+        "custom/mako",
         "group/sound",
         "hyprland/language",
         "custom/fcitx5",
@@ -49,6 +50,16 @@
     "tray": {
       "icon-size": 14,
       "spacing": 3
+    },
+    "custom/mako": {
+      "format": "",
+      "exec": "~/.config/waybar/scripts/mako-count.sh",
+      "return-type": "json",
+      "interval": 3,
+      "signal": 8,
+      "on-click": "~/.config/waybar/scripts/mako-replay-unread.sh",
+      "on-click-right": "~/.config/waybar/scripts/mako-ack-all.sh",
+      "tooltip": true
     },
     "group/sound": {
       "orientation": "horizontal",

@@ -168,3 +168,16 @@
 .modules-right {
   margin-right: 5px;
 }
+
+/* ── Mako notifications (icon-only, glows when present) ───── */
+#custom-mako {
+  padding: 0 8px;
+  font-size: 14px;
+}
+#custom-mako.empty {
+  color: @overlay0;
+}
+#custom-mako.has-notifications {
+  color: @yellow;
+  text-shadow: 0 0 8px alpha(@yellow, 0.7);
+}
