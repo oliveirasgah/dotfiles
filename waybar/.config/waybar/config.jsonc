@@ -2,7 +2,11 @@
   {
     "output": "DP-1",
     "modules-left": [
-      "hyprland/window"
+      "hyprland/window",
+      "custom/mpris-separator",
+      "custom/mpris-prev",
+      "mpris",
+      "custom/mpris-next"
     ],
     "modules-center": [
       "hyprland/workspaces"
@@ -34,6 +38,52 @@
           10
         ]
       }
+    },
+    "mpris": {
+      "format": "{player_icon} {status_icon}  {dynamic}",
+      "format-paused": "{player_icon} {status_icon}  <i>{dynamic}</i>",
+      "format-stopped": "{player_icon} {status_icon}",
+      "player-icons": {
+        "default": "",
+        "spotify": "",
+        "firefox": "",
+        "chromium": "",
+        "mpv": "",
+        "youtube": "",
+        "youtube-music": ""
+      },
+      "status-icons": {
+        "playing": "",
+        "paused": "",
+        "stopped": ""
+      },
+      "dynamic-len": 45,
+      "dynamic-order": ["title", "artist"],
+      "interval": 1,
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl volume 0.05+",
+      "on-scroll-down": "playerctl volume 0.05-",
+      "tooltip-format": "{player} — {status}\n{artist} · {album}\n{title}\n{position}/{length}"
+    },
+    "custom/mpris-separator": {
+      "format": "{}",
+      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '┃' || echo ''",
+      "interval": 2,
+      "tooltip": false
+    },
+    "custom/mpris-prev": {
+      "format": "{}",
+      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
+      "interval": 2,
+      "on-click": "playerctl previous",
+      "tooltip": false
+    },
+    "custom/mpris-next": {
+      "format": "{}",
+      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
+      "interval": 2,
+      "on-click": "playerctl next",
+      "tooltip": false
     },
     "group/system": {
       "orientation": "horizontal",

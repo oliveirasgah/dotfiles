@@ -169,6 +169,34 @@
   margin-right: 5px;
 }
 
+/* ── Media (mpris) ────────────────────────────────────────── */
+#mpris {
+  color: @teal;
+  padding: 0 6px;
+}
+
+#mpris.paused  { color: @overlay2; }
+#mpris.stopped { color: @overlay0; }
+
+#custom-mpris-separator {
+  color: @overlay1;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+#custom-mpris-prev,
+#custom-mpris-next {
+  color: @subtext1;
+  padding: 0 6px;
+  font-size: 13px;
+  transition: color 150ms ease;
+}
+#custom-mpris-prev:hover,
+#custom-mpris-next:hover {
+  color: @teal;
+  text-shadow: 0 0 6px alpha(@teal, 0.6);
+}
+
 /* ── Weather (wttr.in) ────────────────────────────────────── */
 #custom-weather {
   color: @sapphire;
