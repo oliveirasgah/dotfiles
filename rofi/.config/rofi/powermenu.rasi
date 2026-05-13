@@ -1,0 +1,103 @@
+/**
+ * Author       : Gabriel
+ * Github       : @oliveirasgah
+ * Rofi Version : 2.0.0
+ * Theme        : Power menu — Catppuccin Mocha (matches main rofi theme)
+ **/
+
+@import "colors.rasi"
+
+* {
+    font: "FiraCode Nerd Font 12";
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    width:            500px;
+    border:           2px;
+    border-radius:    20px;
+    border-color:     @mauve;
+    background-color: @base;
+    cursor:           "default";
+}
+
+mainbox {
+    spacing:          18px;
+    padding:          28px 32px;
+    background-color: transparent;
+    children:         [ "inputbar", "message", "listview" ];
+}
+
+/* Header — power icon + label */
+inputbar {
+    spacing:          0px;
+    padding:          0px;
+    background-color: transparent;
+    children:         [ "textbox-prompt-colon", "prompt" ];
+}
+
+textbox-prompt-colon {
+    font:             "FiraCode Nerd Font 16";
+    expand:           false;
+    padding:          0 12px 0 0;
+    background-color: transparent;
+    text-color:       @mauve;
+    str:              "⏻";
+    vertical-align:   0.5;
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @text;
+    vertical-align:   0.5;
+}
+
+/* Sub-line: hostname / uptime */
+message {
+    padding:          8px 14px;
+    border-radius:    100%;
+    background-color: @surface0;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @subtext0;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+}
+
+/* Action rows */
+listview {
+    columns:          1;
+    lines:            5;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    spacing:          6px;
+    background-color: transparent;
+    cursor:           "default";
+}
+
+element {
+    spacing:          12px;
+    padding:          12px 16px;
+    border-radius:    12px;
+    background-color: transparent;
+    text-color:       @subtext0;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-image: linear-gradient(to right, #45475A, #313244);
+    text-color:       @mauve;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
