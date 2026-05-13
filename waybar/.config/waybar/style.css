@@ -1,172 +1,78 @@
-@import "mocha.css";
+@import "macchiato.css";
 
 * {
   margin: 0;
   padding: 0;
   border: none;
   border-radius: 0;
-  font-family: FontAwesome, "Museo Moderno", sans-serif;
-  font-weight: normal;
+  font-family: "JetBrainsMono Nerd Font", "Museo Moderno", FontAwesome, sans-serif;
+  font-weight: 500;
   font-size: 14px;
+  min-height: 0;
 }
 
-#waybar {
-  background-color: transparent;
+window#waybar {
+  background: transparent;
   color: @text;
 }
 
-#waybar.empty #window {
-  background-color: transparent;
+/* Three pill bars (left/center/right groups float separately). */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: alpha(@base, 0.85);
+  border: 1px solid alpha(@surface1, 0.8);
+  border-radius: 16px;
+  padding: 2px 10px;
+  margin: 0 10px;
+  box-shadow: 0 2px 8px alpha(@crust, 0.5);
 }
 
-#window,
-#workspaces,
-#system,
-#tray {
-  background-color: @surface0;
-  margin: 8px 0;
-  border-radius: 15px;
-  padding: 2px 5px;
+/* ── Workspaces (center pill) ────────────────────────────── */
+#workspaces {
+  background: transparent;
+  padding: 0 4px;
 }
 
 #workspaces button {
-  border-radius: 15px;
+  border-radius: 12px;
   background: transparent;
-  color: @blue;
-  padding: 0 0.3rem;
-  transition: all 0.2s ease-in-out;
+  color: @overlay1;
+  padding: 0 8px;
+  margin: 2px 2px;
+  font-size: 15px;
+  transition: all 200ms ease;
 }
 
 #workspaces button:hover {
-  background: rgba(0, 0, 0, 0.2);
-  font-weight: 400;
-}
-
-#workspaces button.active {
-  color: @green;
-  transition: all 0.2s ease-in-out;
-}
-
-#workspaces button.urgent {
-  transition: all 0.2s ease-in-out;
-  color: @blue;
-  background-color: @red-button;
-  animation: blink-color 1s linear 0.3s infinite;
-}
-
-@keyframes blink-color {
-  0% {
-    color: @blue;
-    background-color: @red-button;
-  }
-
-  50% {
-    background-color: @blue-button;
-    color: @red;
-  }
-
-  100% {
-    color: @blue;
-    background-color: @red-button;
-  }
-}
-
-#tray {
-  margin-right: 3px;
-  padding: 2px 7px;
-}
-
-#pulseaudio.output,
-#pulseaudio.input,
-#pulseaudio-slider {
-  padding: 2px 5px;
-}
-
-#pulseaudio.output {
-  color: @green;
-  padding: 2px 7px 2px 5px;
-}
-
-#pulseaudio.input {
+  background: alpha(@surface1, 0.6);
   color: @lavender;
 }
 
-#pulseaudio.output.muted {
-  padding: 2px 2px;
-  color: @red;
+#workspaces button.active {
+  color: @mauve;
+  background: alpha(@mauve, 0.18);
+  text-shadow: 0 0 8px alpha(@mauve, 0.6);
+  min-width: 22px;
 }
 
-#pulseaudio.input.source-muted {
-  padding: 2px 9px 2px 1px;
-  color: @red;
+#workspaces button.urgent {
+  color: @base;
+  background: alpha(@red, 0.55);
+  animation: blink 1s linear infinite;
 }
 
-#pulseaudio-slider slider {
-  min-height: 0;
-  min-width: 0;
-  opacity: 0;
-  background-image: none;
-  border: none;
-  box-shadow: none;
+@keyframes blink {
+  0%   { background: alpha(@red, 0.35); }
+  50%  { background: alpha(@red, 0.7); }
+  100% { background: alpha(@red, 0.35); }
 }
 
-#pulseaudio-slider trough {
-  min-height: 10px;
-  min-width: 100px;
-  border-radius: 5px;
-  background-color: @surface2;
-}
-
-#pulseaudio-slider highlight {
-  min-width: 10px;
-  border-radius: 5px;
-  background-color: @sapphire;
-}
-
-#pulseaudio #output {
-  color: green;
-}
-
-#language {
-  color: @pink;
-  margin-left: 3px;
-}
-
-#custom-fcitx5 {
-  margin-left: 1px;
-  font-size: 16px;
-}
-
-#custom-fcitx5.active {
-  color: @yellow;
-  text-shadow: 0 0 3px @yellow;
-}
-
-#custom-fcitx5.inactive {
-  color: @surface2;
-}
-
-#cpu {
-  margin-right: 7px;
-  margin-left: 5px;
-  font-family: "Hack Nerd Font", sans-serif;
-}
-
-#memory {
-  margin-right: 5px;
-  color: @yellow;
-}
-
-#clock {
-  margin-right: 3px;
-}
-
-.modules-left {
-  margin-left: 5px;
-}
-
-.modules-right {
-  margin-right: 5px;
+/* ── Window title (left pill) ────────────────────────────── */
+#window {
+  color: @subtext1;
+  padding: 0 6px;
+  font-style: italic;
 }
 
 /* ── Media (mpris) ────────────────────────────────────────── */
@@ -195,6 +101,14 @@
 #custom-mpris-next:hover {
   color: @teal;
   text-shadow: 0 0 6px alpha(@teal, 0.6);
+}
+
+/* ── Tray ─────────────────────────────────────────────────── */
+#tray {
+  padding: 0 6px;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }
 
 /* ── Weather (wttr.in) ────────────────────────────────────── */
@@ -238,4 +152,85 @@
 #custom-mako.has-notifications {
   color: @yellow;
   text-shadow: 0 0 8px alpha(@yellow, 0.7);
+}
+
+/* ── Sound (drawer group) ─────────────────────────────────── */
+#pulseaudio {
+  padding: 0 4px;
+}
+#pulseaudio.output  { color: @green; }
+#pulseaudio.input   { color: @lavender; }
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted {
+  color: @red;
+}
+
+#pulseaudio-slider trough {
+  min-height: 8px;
+  min-width: 90px;
+  border-radius: 4px;
+  background: alpha(@surface2, 0.6);
+  margin: 0 6px;
+}
+#pulseaudio-slider highlight {
+  min-width: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, @sapphire, @mauve);
+}
+#pulseaudio-slider slider {
+  min-height: 0;
+  min-width: 0;
+  opacity: 0;
+}
+
+/* ── Language / fcitx5 ────────────────────────────────────── */
+#language {
+  color: @pink;
+  padding: 0 6px;
+}
+#custom-fcitx5 {
+  padding: 0 4px;
+  font-size: 14px;
+}
+#custom-fcitx5.active {
+  color: @mauve;
+  text-shadow: 0 0 6px alpha(@mauve, 0.6);
+}
+#custom-fcitx5.inactive {
+  color: @overlay0;
+}
+
+/* ── CPU & memory ─────────────────────────────────────────── */
+#cpu {
+  padding: 0 6px;
+  font-family: "Hack Nerd Font", monospace;
+}
+#memory {
+  color: @yellow;
+  padding: 0 6px;
+}
+
+/* ── Clock (accent) ───────────────────────────────────────── */
+#clock {
+  color: @lavender;
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+/* ── Tooltips ─────────────────────────────────────────────── */
+@keyframes tooltip-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+tooltip {
+  background: @mantle;
+  border: 1px solid @surface1;
+  border-radius: 10px;
+  animation: tooltip-fade-in 220ms ease-out;
+  transition: opacity 220ms ease-in;
+}
+tooltip label {
+  color: @text;
+  padding: 4px;
 }

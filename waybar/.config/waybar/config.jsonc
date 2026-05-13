@@ -1,6 +1,13 @@
 [
   {
     "output": "DP-1",
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 0,
+    "margin-top": 8,
+    "margin-left": 500,
+    "margin-right": 500,
     "modules-left": [
       "hyprland/window",
       "custom/mpris-separator",
@@ -15,28 +22,22 @@
       "tray",
       "group/system"
     ],
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 60,
+      "separate-outputs": true
+    },
     "hyprland/workspaces": {
       "format": "{icon}",
       "format-icons": {
         "default": "○",
-        "active": ""
+        "active": "",
+        "urgent": ""
       },
       "all-outputs": false,
       "persistent-workspaces": {
-        "DP-1": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9
-        ],
-        "HDMI-A-1": [
-          10
-        ]
+        "DP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "HDMI-A-1": [10]
       }
     },
     "mpris": {
@@ -44,18 +45,18 @@
       "format-paused": "{player_icon} {status_icon}  <i>{dynamic}</i>",
       "format-stopped": "{player_icon} {status_icon}",
       "player-icons": {
-        "default": "",
-        "spotify": "",
-        "firefox": "",
-        "chromium": "",
-        "mpv": "",
-        "youtube": "",
-        "youtube-music": ""
+        "default": "",
+        "spotify": "",
+        "firefox": "",
+        "chromium": "",
+        "mpv": "",
+        "youtube": "",
+        "youtube-music": ""
       },
       "status-icons": {
-        "playing": "",
-        "paused": "",
-        "stopped": ""
+        "playing": "",
+        "paused": "",
+        "stopped": ""
       },
       "dynamic-len": 45,
       "dynamic-order": ["title", "artist"],
@@ -73,14 +74,14 @@
     },
     "custom/mpris-prev": {
       "format": "{}",
-      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
+      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
       "interval": 2,
       "on-click": "playerctl previous",
       "tooltip": false
     },
     "custom/mpris-next": {
       "format": "{}",
-      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
+      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
       "interval": 2,
       "on-click": "playerctl next",
       "tooltip": false
@@ -99,6 +100,10 @@
         "clock"
       ]
     },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 6
+    },
     "custom/weather": {
       "format": "{}",
       "exec": "~/.config/waybar/scripts/weather.sh",
@@ -108,7 +113,7 @@
       "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
     },
     "custom/updates": {
-      "format": "",
+      "format": "",
       "exec": "~/.config/waybar/scripts/pacman-updates.sh",
       "return-type": "json",
       "interval": 1800,
@@ -116,12 +121,8 @@
       "on-click": "kitty --class float-general -e sh -c 'yay -Syu; read -n 1 -s -r -p \"Done. Press any key…\"; pkill -RTMIN+9 waybar'",
       "tooltip": true
     },
-    "tray": {
-      "icon-size": 14,
-      "spacing": 3
-    },
     "custom/mako": {
-      "format": "",
+      "format": "",
       "exec": "~/.config/waybar/scripts/mako-count.sh",
       "return-type": "json",
       "interval": 3,
@@ -132,15 +133,10 @@
     },
     "group/sound": {
       "orientation": "horizontal",
-      "drawer": {
-        "transition-duration": 500,
-        "children-class": "not-power",
-        "transition-left-to-right": false
-      },
       "modules": [
         "pulseaudio#output",
-        "pulseaudio#input",
-        "pulseaudio/slider"
+        "pulseaudio/slider",
+        "pulseaudio#input"
       ]
     },
     "pulseaudio/slider": {
@@ -150,11 +146,9 @@
     },
     "pulseaudio#output": {
       "format": "{icon}",
-      "format-muted": "",
+      "format-muted": "",
       "format-icons": {
-        "default": [
-          ""
-        ]
+        "default": ["", "", ""]
       },
       "scroll-step": 5,
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -182,25 +176,25 @@
       "interval": 1,
       "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
       "format-icons": [
-        "<span color='#a6e3a1'>▁</span>", // green
-        "<span color='#89b4fa'>▂</span>", // blue
-        "<span color='#8839ef'>▃</span>", // mauve
-        "<span color='#f5e0dc'>▄</span>", // rosewater
-        "<span color='#f9e2af'>▅</span>", // yellow
-        "<span color='#fab387'>▆</span>", // peach
-        "<span color='#f2cdcd'>▇</span>", // flamingo
-        "<span color='#f38ba8'>█</span>" // red
+        "<span color='#a6da95'>▁</span>",
+        "<span color='#8aadf4'>▂</span>",
+        "<span color='#b7bdf8'>▃</span>",
+        "<span color='#f4dbd6'>▄</span>",
+        "<span color='#eed49f'>▅</span>",
+        "<span color='#f5a97f'>▆</span>",
+        "<span color='#f0c6c6'>▇</span>",
+        "<span color='#ed8796'>█</span>"
       ],
       "on-click": "kitty --class float-general -e btop"
     },
     "memory": {
       "interval": 1,
-      "format": " {}%",
+      "format": " {}%",
       "on-click": "kitty --class float-general -e btop"
     },
     "clock": {
-      "format": " {:%A, %B %d, %Y  %R}",
-      "format-alt": " {:%R}",
+      "format": "{:%a %b %d  %R}",
+      "format-alt": "{:%R}",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",
@@ -208,11 +202,11 @@
         "weeks-pos": "right",
         "on-scroll": 1,
         "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "days": "<span color='#ecc6d9'><b>{}</b></span>",
-          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+          "months": "<span color='#f4dbd6'><b>{}</b></span>",
+          "days": "<span color='#cad3f5'><b>{}</b></span>",
+          "weeks": "<span color='#8bd5ca'><b>W{}</b></span>",
+          "weekdays": "<span color='#eed49f'><b>{}</b></span>",
+          "today": "<span color='#f5bde6'><b><u>{}</u></b></span>"
         }
       },
       "actions": {
@@ -226,6 +220,10 @@
     "output": "HDMI-A-1",
     "layer": "bottom",
     "position": "bottom",
+    "height": 32,
+    "margin-bottom": 8,
+    "margin-left": 380,
+    "margin-right": 380,
     "modules-left": [
       "hyprland/window"
     ],
@@ -234,6 +232,11 @@
       "tray",
       "group/system"
     ],
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "separate-outputs": true
+    },
     "group/system": {
       "orientation": "horizontal",
       "modules": [
@@ -246,7 +249,7 @@
     },
     "tray": {
       "icon-size": 14,
-      "spacing": 3
+      "spacing": 6
     },
     "custom/weather": {
       "format": "{}",
@@ -258,15 +261,10 @@
     },
     "group/sound": {
       "orientation": "horizontal",
-      "drawer": {
-        "transition-duration": 500,
-        "children-class": "not-power",
-        "transition-left-to-right": false
-      },
       "modules": [
         "pulseaudio#output",
-        "pulseaudio#input",
-        "pulseaudio/slider"
+        "pulseaudio/slider",
+        "pulseaudio#input"
       ]
     },
     "pulseaudio/slider": {
@@ -276,11 +274,9 @@
     },
     "pulseaudio#output": {
       "format": "{icon}",
-      "format-muted": "",
+      "format-muted": "",
       "format-icons": {
-        "default": [
-          ""
-        ]
+        "default": ["", "", ""]
       },
       "scroll-step": 5,
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -305,8 +301,8 @@
       "on-click": "fcitx5-remote -t"
     },
     "clock": {
-      "format": " {:%A, %B %d, %Y  %R}",
-      "format-alt": " {:%R}",
+      "format": "{:%a %b %d  %R}",
+      "format-alt": "{:%R}",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",
@@ -314,11 +310,11 @@
         "weeks-pos": "right",
         "on-scroll": 1,
         "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "days": "<span color='#ecc6d9'><b>{}</b></span>",
-          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+          "months": "<span color='#f4dbd6'><b>{}</b></span>",
+          "days": "<span color='#cad3f5'><b>{}</b></span>",
+          "weeks": "<span color='#8bd5ca'><b>W{}</b></span>",
+          "weekdays": "<span color='#eed49f'><b>{}</b></span>",
+          "today": "<span color='#f5bde6'><b><u>{}</u></b></span>"
         }
       },
       "actions": {
