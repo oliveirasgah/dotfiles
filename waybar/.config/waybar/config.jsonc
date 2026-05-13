@@ -156,17 +156,18 @@
           ""
         ]
       },
+      "scroll-step": 5,
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "pavucontrol -t 3"
+      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh output",
+      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+      "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     },
     "pulseaudio#input": {
       "format": "{format_source}",
       "format-source": "",
       "format-source-muted": "",
       "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-right": "pavucontrol -t 4",
-      "on-scroll-up": "",
-      "on-scroll-down": ""
+      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
     },
     "hyprland/language": {
       "format": "⌨ {}"
@@ -281,17 +282,18 @@
           ""
         ]
       },
+      "scroll-step": 5,
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "pavucontrol -t 3"
+      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh output",
+      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+      "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     },
     "pulseaudio#input": {
       "format": "{format_source}",
       "format-source": "",
       "format-source-muted": "",
       "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-right": "pavucontrol -t 4",
-      "on-scroll-up": "",
-      "on-scroll-down": ""
+      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
     },
     "hyprland/language": {
       "format": "⌨ {}"

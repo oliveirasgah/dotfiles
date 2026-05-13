@@ -1,0 +1,104 @@
+/**
+ * Theme : Sound picker — compact menu for selecting audio sink/source.
+ *         Header icon (textbox-prompt-colon str) and window position
+ *         (location/anchor/x-offset/y-offset) are overridden per call
+ *         from sound-picker.sh.
+ **/
+
+@import "colors.rasi"
+
+configuration {
+    me-select-entry: "Shift+MousePrimary";
+    me-accept-entry: "MousePrimary";
+}
+
+* {
+    font: "FiraCode Nerd Font 12";
+}
+
+window {
+    transparency:     "real";
+    width:            380px;
+    border:           2px;
+    border-radius:    14px;
+    border-color:     @mauve;
+    background-color: @base;
+    cursor:           "default";
+}
+
+mainbox {
+    spacing:          12px;
+    padding:          20px 22px;
+    background-color: transparent;
+    children:         [ "inputbar", "message", "listview" ];
+}
+
+inputbar {
+    spacing:          0px;
+    padding:          0px;
+    background-color: transparent;
+    children:         [ "textbox-prompt-colon", "prompt" ];
+}
+
+textbox-prompt-colon {
+    font:             "FiraCode Nerd Font 16";
+    expand:           false;
+    padding:          0 12px 0 0;
+    background-color: transparent;
+    text-color:       @mauve;
+    str:              "♪";
+    vertical-align:   0.5;
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @text;
+    vertical-align:   0.5;
+}
+
+message {
+    padding:          6px 12px;
+    border-radius:    100%;
+    background-color: @surface0;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @subtext0;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+}
+
+listview {
+    columns:          1;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    spacing:          4px;
+    background-color: transparent;
+    cursor:           "default";
+}
+
+element {
+    children:         [ "element-text" ];
+    spacing:          10px;
+    padding:          10px 14px;
+    border-radius:    10px;
+    background-color: transparent;
+    text-color:       @subtext0;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-image: linear-gradient(to right, #45475A, #313244);
+    text-color:       @mauve;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
