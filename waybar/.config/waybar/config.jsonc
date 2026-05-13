@@ -38,6 +38,7 @@
     "group/system": {
       "orientation": "horizontal",
       "modules": [
+        "custom/weather",
         "custom/mako",
         "group/sound",
         "hyprland/language",
@@ -46,6 +47,14 @@
         "memory",
         "clock"
       ]
+    },
+    "custom/weather": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/weather.sh",
+      "return-type": "json",
+      "interval": 1800,
+      "tooltip": true,
+      "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
     },
     "tray": {
       "icon-size": 14,
@@ -167,6 +176,7 @@
     "group/system": {
       "orientation": "horizontal",
       "modules": [
+        "custom/weather",
         "group/sound",
         "hyprland/language",
         "custom/fcitx5",
@@ -176,6 +186,14 @@
     "tray": {
       "icon-size": 14,
       "spacing": 3
+    },
+    "custom/weather": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/weather.sh",
+      "return-type": "json",
+      "interval": 1800,
+      "tooltip": true,
+      "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
     },
     "group/sound": {
       "orientation": "horizontal",

@@ -169,6 +169,23 @@
   margin-right: 5px;
 }
 
+/* ── Weather (wttr.in) ────────────────────────────────────── */
+#custom-weather {
+  color: @sapphire;
+  padding: 0 8px;
+  font-family: "Symbols Nerd Font", "FiraCode Nerd Font",
+               "JetBrainsMono Nerd Font", "Museo Moderno", sans-serif;
+}
+#custom-weather.sunny         { color: @yellow; }
+#custom-weather.partly-cloudy { color: @sky; }
+#custom-weather.cloudy        { color: @subtext0; }
+#custom-weather.overcast      { color: @overlay2; }
+#custom-weather.fog           { color: @overlay1; }
+#custom-weather.rainy         { color: @blue; }
+#custom-weather.snowy         { color: @rosewater; }
+#custom-weather.thunder       { color: @mauve; text-shadow: 0 0 6px alpha(@mauve, 0.5); }
+#custom-weather.unknown       { color: @overlay0; }
+
 /* ── Mako notifications (icon-only, glows when present) ───── */
 #custom-mako {
   padding: 0 8px;
