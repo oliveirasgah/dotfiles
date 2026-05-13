@@ -2,29 +2,29 @@
 max-visible=5
 sort=-time
 layer=overlay
-anchor=top-right
+anchor=top-center
 output=DP-1
 
 # Dimensions
-width=380
+width=420
 height=130
-margin=10
-padding=5
+margin=12
+padding=12
 border-size=2
-border-radius=8
+border-radius=12
 
 # Timing
 default-timeout=5000
 ignore-timeout=0
 
-# Colors
-background-color=#1e1e2edd
-text-color=#cdd6f4ff
-border-color=#cba6f7ff
-progress-color=over #313244ff
+# Colors — Catppuccin Macchiato
+background-color=#24273add
+text-color=#cad3f5ff
+border-color=#c6a0f6ff
+progress-color=over #363a4fff
 
 # Typography
-font=sans-serif
+font=sans-serif 11
 
 # Icons
 icons=1
@@ -32,16 +32,16 @@ max-icon-size=48
 
 # Urgency: low
 [urgency=low]
-border-color=#89b4faff
+border-color=#8aadf4ff
 default-timeout=3000
 
 # Urgency: normal
 [urgency=normal]
-border-color=#cba6f7ff
+border-color=#c6a0f6ff
 default-timeout=5000
 
 # Urgency: high
 [urgency=high]
-border-color=#f38ba8ff
-text-color=#f38ba8ff
+border-color=#ed8796ff
+text-color=#ed8796ff
 default-timeout=0
