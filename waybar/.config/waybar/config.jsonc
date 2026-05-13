@@ -39,6 +39,7 @@
       "orientation": "horizontal",
       "modules": [
         "custom/weather",
+        "custom/updates",
         "custom/mako",
         "group/sound",
         "hyprland/language",
@@ -55,6 +56,15 @@
       "interval": 1800,
       "tooltip": true,
       "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
+    },
+    "custom/updates": {
+      "format": "",
+      "exec": "~/.config/waybar/scripts/pacman-updates.sh",
+      "return-type": "json",
+      "interval": 1800,
+      "signal": 9,
+      "on-click": "kitty --class float-general -e sh -c 'yay -Syu; read -n 1 -s -r -p \"Done. Press any key…\"; pkill -RTMIN+9 waybar'",
+      "tooltip": true
     },
     "tray": {
       "icon-size": 14,

@@ -186,6 +186,19 @@
 #custom-weather.thunder       { color: @mauve; text-shadow: 0 0 6px alpha(@mauve, 0.5); }
 #custom-weather.unknown       { color: @overlay0; }
 
+/* ── Pacman updates (icon-only, glows when pending) ───────── */
+#custom-updates {
+  padding: 0 8px;
+  font-size: 14px;
+}
+#custom-updates.updated {
+  color: @overlay0;
+}
+#custom-updates.updates-pending {
+  color: @green;
+  text-shadow: 0 0 8px alpha(@green, 0.7);
+}
+
 /* ── Mako notifications (icon-only, glows when present) ───── */
 #custom-mako {
   padding: 0 8px;
