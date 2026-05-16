@@ -21,7 +21,7 @@ window {
     width:            380px;
     border:           2px;
     border-radius:    14px;
-    border-color:     @mauve;
+    border-color:     @peach;
     background-color: @base;
     cursor:           "default";
 }
@@ -45,7 +45,7 @@ textbox-prompt-colon {
     expand:           false;
     padding:          0 12px 0 0;
     background-color: transparent;
-    text-color:       @mauve;
+    text-color:       @peach;
     str:              "♪";
     vertical-align:   0.5;
 }
@@ -92,7 +92,7 @@ element {
 
 element selected.normal {
     background-image: linear-gradient(to right, #45475A, #313244);
-    text-color:       @mauve;
+    text-color:       @peach;
 }
 
 element-text {

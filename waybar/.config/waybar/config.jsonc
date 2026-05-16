@@ -30,14 +30,13 @@
     "hyprland/workspaces": {
       "format": "{icon}",
       "format-icons": {
-        "default": "○",
+        "default": "·",
         "active": "",
         "urgent": ""
       },
       "all-outputs": false,
       "persistent-workspaces": {
-        "DP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        "HDMI-A-1": [10]
+        "DP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9]
       }
     },
     "mpris": {
@@ -227,7 +226,6 @@
     "modules-left": [
       "hyprland/window"
     ],
-    "modules-center": [],
     "modules-right": [
       "tray",
       "group/system"
@@ -240,7 +238,6 @@
     "group/system": {
       "orientation": "horizontal",
       "modules": [
-        "custom/weather",
         "group/sound",
         "hyprland/language",
         "custom/fcitx5",
@@ -251,16 +248,13 @@
       "icon-size": 14,
       "spacing": 6
     },
-    "custom/weather": {
-      "format": "{}",
-      "exec": "~/.config/waybar/scripts/weather.sh",
-      "return-type": "json",
-      "interval": 1800,
-      "tooltip": true,
-      "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
-    },
     "group/sound": {
       "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 300,
+        "transition-left-to-right": true,
+        "children-class": "drawer-child"
+      },
       "modules": [
         "pulseaudio#output",
         "pulseaudio/slider",
@@ -301,8 +295,8 @@
       "on-click": "fcitx5-remote -t"
     },
     "clock": {
-      "format": "{:%a %b %d  %R}",
-      "format-alt": "{:%R}",
+      "format": "{:%R}",
+      "format-alt": "{:%a %b %d  %R}",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",

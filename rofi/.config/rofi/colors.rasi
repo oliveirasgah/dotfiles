@@ -42,7 +42,7 @@
     background:     @base;
     background-alt: @surface0;
     foreground:     @text;
-    selected:       @mauve;
+    selected:       @peach;
     active:         @green;
     urgent:         @red;
 }

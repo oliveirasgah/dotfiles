@@ -116,13 +116,23 @@ hl.animation({ leaf = "fadeIn",        enabled = true, speed = 1.73, bezier = "a
 hl.animation({ leaf = "fadeOut",       enabled = true, speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade",          enabled = true, speed = 3.03, bezier = "quick" })
 hl.animation({ leaf = "layers",        enabled = true, speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn",      enabled = true, speed = 4,    bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersIn",      enabled = true, speed = 4,    bezier = "easeOutQuint", style = "popin 80%" })
 hl.animation({ leaf = "layersOut",     enabled = true, speed = 1.5,  bezier = "linear",       style = "fade" })
 hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces",    enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn",  enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspaces",    enabled = true, speed = 2.5,  bezier = "easeOutQuint",  style = "slide" })
+hl.animation({ leaf = "workspacesIn",  enabled = true, speed = 2.5,  bezier = "easeOutQuint",  style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2.5,  bezier = "easeOutQuint",  style = "slide" })
+
+-- Special workspace (magic scratchpad on SUPER+S) — drops down from top.
+hl.animation({ leaf = "specialWorkspace",    enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
+hl.animation({ leaf = "specialWorkspaceIn",  enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
+hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
+
+-- Active border gradient rotates continuously. The `loop` field is not in the
+-- canonical Lua example (as of 0.55); verify on first reload — if Hyprland
+-- rejects it, drop `loop` and the gradient will just animate once on focus.
+hl.animation({ leaf = "borderangle", enabled = true, speed = 30, bezier = "linear", loop = true })
 
 
 ---------------

@@ -28,44 +28,48 @@ window#waybar {
   box-shadow: 0 2px 8px alpha(@crust, 0.5);
 }
 
-/* ── Workspaces (center pill) ────────────────────────────── */
+/* ── Workspaces (minimal dot row) ────────────────────────── */
 #workspaces {
   background: transparent;
   padding: 0 4px;
 }
 
 #workspaces button {
-  border-radius: 12px;
   background: transparent;
-  color: @overlay1;
-  padding: 0 8px;
-  margin: 2px 2px;
-  font-size: 15px;
+  color: @overlay0;
+  padding: 0 6px;
+  margin: 0;
+  min-width: 14px;
+  font-size: 9px;
   transition: all 200ms ease;
 }
 
 #workspaces button:hover {
-  background: alpha(@surface1, 0.6);
-  color: @lavender;
+  background: transparent;
+  color: @pink;
+  text-shadow: 0 0 6px alpha(@pink, 0.6);
 }
 
 #workspaces button.active {
-  color: @mauve;
-  background: alpha(@mauve, 0.18);
-  text-shadow: 0 0 8px alpha(@mauve, 0.6);
-  min-width: 22px;
+  color: @peach;
+  background: transparent;
+  font-size: 14px;
+  text-shadow:
+    0 0 4px alpha(@peach, 0.8),
+    0 0 10px alpha(@peach, 0.5);
 }
 
 #workspaces button.urgent {
-  color: @base;
-  background: alpha(@red, 0.55);
-  animation: blink 1s linear infinite;
+  color: @red;
+  background: transparent;
+  font-size: 14px;
+  animation: blink 1.1s ease-in-out infinite;
 }
 
 @keyframes blink {
-  0%   { background: alpha(@red, 0.35); }
-  50%  { background: alpha(@red, 0.7); }
-  100% { background: alpha(@red, 0.35); }
+  0%   { opacity: 0.4; text-shadow: 0 0 3px alpha(@red, 0.4); }
+  50%  { opacity: 1.0; text-shadow: 0 0 12px alpha(@red, 0.95); }
+  100% { opacity: 0.4; text-shadow: 0 0 3px alpha(@red, 0.4); }
 }
 
 /* ── Window title (left pill) ────────────────────────────── */
@@ -125,7 +129,7 @@ window#waybar {
 #custom-weather.fog           { color: @overlay1; }
 #custom-weather.rainy         { color: @blue; }
 #custom-weather.snowy         { color: @rosewater; }
-#custom-weather.thunder       { color: @mauve; text-shadow: 0 0 6px alpha(@mauve, 0.5); }
+#custom-weather.thunder       { color: @red;   text-shadow: 0 0 6px alpha(@red, 0.5); }
 #custom-weather.unknown       { color: @overlay0; }
 
 /* ── Pacman updates (icon-only, glows when pending) ───────── */
@@ -159,7 +163,7 @@ window#waybar {
   padding: 0 4px;
 }
 #pulseaudio.output  { color: @green; }
-#pulseaudio.input   { color: @lavender; }
+#pulseaudio.input   { color: @pink; }
 #pulseaudio.output.muted,
 #pulseaudio.input.source-muted {
   color: @red;
@@ -175,7 +179,7 @@ window#waybar {
 #pulseaudio-slider highlight {
   min-width: 8px;
   border-radius: 4px;
-  background: linear-gradient(to right, @sapphire, @mauve);
+  background: linear-gradient(to right, @yellow, @peach);
 }
 #pulseaudio-slider slider {
   min-height: 0;
@@ -193,8 +197,8 @@ window#waybar {
   font-size: 14px;
 }
 #custom-fcitx5.active {
-  color: @mauve;
-  text-shadow: 0 0 6px alpha(@mauve, 0.6);
+  color: @peach;
+  text-shadow: 0 0 6px alpha(@peach, 0.6);
 }
 #custom-fcitx5.inactive {
   color: @overlay0;
@@ -212,7 +216,7 @@ window#waybar {
 
 /* ── Clock (accent) ───────────────────────────────────────── */
 #clock {
-  color: @lavender;
+  color: @peach;
   padding: 0 8px;
   font-weight: 600;
 }
@@ -233,4 +237,53 @@ tooltip {
 tooltip label {
   color: @text;
   padding: 4px;
+}
+
+/* ── Secondary monitor (HDMI-A-1): compact variant ────────── */
+window#waybar.HDMI-A-1 * {
+  font-size: 12px;
+}
+
+window#waybar.HDMI-A-1 .modules-left,
+window#waybar.HDMI-A-1 .modules-right {
+  background: alpha(@base, 0.75);
+  border: 1px solid alpha(@surface1, 0.5);
+  border-radius: 12px;
+  padding: 1px 6px;
+  margin: 0 6px;
+  box-shadow: 0 1px 4px alpha(@crust, 0.4);
+}
+
+window#waybar.HDMI-A-1 .modules-center {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  min-width: 0;
+}
+
+window#waybar.HDMI-A-1 #clock {
+  padding: 0 6px;
+}
+
+window#waybar.HDMI-A-1 #window {
+  font-size: 14px;
+}
+
+window#waybar.HDMI-A-1 #language {
+  font-size: 14px;
+  min-width: 110px;
+}
+
+window#waybar.HDMI-A-1 #pulseaudio-slider trough {
+  min-width: 60px;
+  min-height: 6px;
+  margin: 0 4px;
+}
+
+/* Sound drawer: children fade-in is handled by waybar's reveal; we just
+   give them a hair of breathing room when revealed. */
+window#waybar.HDMI-A-1 .drawer-child {
+  margin: 0 2px;
 }

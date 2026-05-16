@@ -50,7 +50,7 @@ textbox-prompt-colon {
     expand:           false;
     padding:          8px 17px 8px 12px;
     border-radius:    100%;
-    background-color: @lavender;
+    background-color: @pink;
     text-color:       @base;
     vertical-align:   0.5;
     horizontal-align: 0.5;
@@ -93,7 +93,7 @@ element {
 
 element selected.normal {
     background-image: linear-gradient(to right, #45475A, #313244);
-    text-color:       @mauve;
+    text-color:       @peach;
 }
 
 element-icon {
@@ -127,5 +127,5 @@ button {
 
 button selected {
     background-color: inherit;
-    text-color:       @peach;
+    text-color:       @yellow;
 }
