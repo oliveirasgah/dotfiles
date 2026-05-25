@@ -321,5 +321,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprpaper.bash")
     hl.exec_cmd("mako")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/mako.sh tracker")
+    -- Pin XWayland's "primary output" to DP-1 so Steam (and any XRANDR client)
+    -- reports the ultrawide as primary instead of HDMI-A-1.
+    hl.exec_cmd([[sh -c "until xrandr --output DP-1 --primary 2>/dev/null; do sleep 0.5; done"]])
     hl.exec_cmd("hyprctl dispatch workspace 1")
 end)
