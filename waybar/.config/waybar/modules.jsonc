@@ -1,0 +1,47 @@
+// Modules shared between every bar. Included from config.jsonc.
+// Bar-specific overrides (e.g. different clock format, drawer on sound group)
+// stay inline in each bar's object.
+{
+  "tray": {
+    "icon-size": 14,
+    "spacing": 6
+  },
+
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+
+  "pulseaudio#output": {
+    "format": "{icon}",
+    "format-muted": "\uf026",
+    "format-icons": {
+      "default": ["\uf027", "\uf027", "\uf028"]
+    },
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "~/.config/waybar/scripts/sound-picker.sh output",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "\uf130",
+    "format-source-muted": "\uf131",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
+  },
+
+  "hyprland/language": {
+    "format": "⌨ {}"
+  },
+
+  "custom/fcitx5": {
+    "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "fcitx5-remote -t"
+  }
+}

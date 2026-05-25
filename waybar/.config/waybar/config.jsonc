@@ -1,6 +1,9 @@
+// Bar layouts. Per-bar overrides stay inline; shared modules live in
+// modules.jsonc and get merged in via "include".
 [
   {
     "output": "DP-1",
+    "include": ["~/.config/waybar/modules.jsonc"],
     "layer": "top",
     "position": "top",
     "height": 36,
@@ -15,13 +18,9 @@
       "mpris",
       "custom/mpris-next"
     ],
-    "modules-center": [
-      "hyprland/workspaces"
-    ],
-    "modules-right": [
-      "tray",
-      "group/system"
-    ],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["tray", "group/system"],
+
     "hyprland/window": {
       "format": "{title}",
       "max-length": 60,
@@ -44,18 +43,18 @@
       "format-paused": "{player_icon} {status_icon}  <i>{dynamic}</i>",
       "format-stopped": "{player_icon} {status_icon}",
       "player-icons": {
-        "default": "",
-        "spotify": "",
-        "firefox": "",
-        "chromium": "",
-        "mpv": "",
-        "youtube": "",
-        "youtube-music": ""
+        "default": "\uf001",
+        "spotify": "\uf1bc",
+        "firefox": "\uf269",
+        "chromium": "\uf268",
+        "mpv": "\uf008",
+        "youtube": "\uf167",
+        "youtube-music": "\uf167"
       },
       "status-icons": {
-        "playing": "",
-        "paused": "",
-        "stopped": ""
+        "playing": "\uf04b",
+        "paused": "\uf04c",
+        "stopped": "\uf04d"
       },
       "dynamic-len": 45,
       "dynamic-order": ["title", "artist"],
@@ -66,25 +65,20 @@
       "tooltip-format": "{player} — {status}\n{artist} · {album}\n{title}\n{position}/{length}"
     },
     "custom/mpris-separator": {
-      "format": "{}",
-      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '┃' || echo ''",
-      "interval": 2,
+      "format": "┃",
       "tooltip": false
     },
     "custom/mpris-prev": {
-      "format": "{}",
-      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
-      "interval": 2,
+      "format": "",
       "on-click": "playerctl previous",
       "tooltip": false
     },
     "custom/mpris-next": {
-      "format": "{}",
-      "exec": "playerctl status 2>/dev/null | grep -qE 'Playing|Paused' && echo '' || echo ''",
-      "interval": 2,
+      "format": "",
       "on-click": "playerctl next",
       "tooltip": false
     },
+
     "group/system": {
       "orientation": "horizontal",
       "modules": [
@@ -99,10 +93,11 @@
         "clock"
       ]
     },
-    "tray": {
-      "icon-size": 14,
-      "spacing": 6
+    "group/sound": {
+      "orientation": "horizontal",
+      "modules": ["pulseaudio#output", "pulseaudio/slider", "pulseaudio#input"]
     },
+
     "custom/weather": {
       "format": "{}",
       "exec": "~/.config/waybar/scripts/weather.sh",
@@ -112,7 +107,7 @@
       "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
     },
     "custom/updates": {
-      "format": "",
+      "format": "\uf019",
       "exec": "~/.config/waybar/scripts/pacman-updates.sh",
       "return-type": "json",
       "interval": 1800,
@@ -121,56 +116,16 @@
       "tooltip": true
     },
     "custom/mako": {
-      "format": "",
-      "exec": "~/.config/waybar/scripts/mako-count.sh",
+      "format": "\uf0f3",
+      "exec": "~/.config/waybar/scripts/mako.sh count",
       "return-type": "json",
-      "interval": 3,
+      "interval": 30,
       "signal": 8,
-      "on-click": "~/.config/waybar/scripts/mako-replay-unread.sh",
-      "on-click-right": "~/.config/waybar/scripts/mako-ack-all.sh",
+      "on-click": "~/.config/waybar/scripts/mako.sh replay",
+      "on-click-right": "~/.config/waybar/scripts/mako.sh ack",
       "tooltip": true
     },
-    "group/sound": {
-      "orientation": "horizontal",
-      "modules": [
-        "pulseaudio#output",
-        "pulseaudio/slider",
-        "pulseaudio#input"
-      ]
-    },
-    "pulseaudio/slider": {
-      "min": 0,
-      "max": 100,
-      "orientation": ""
-    },
-    "pulseaudio#output": {
-      "format": "{icon}",
-      "format-muted": "",
-      "format-icons": {
-        "default": ["", "", ""]
-      },
-      "scroll-step": 5,
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh output",
-      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-      "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-    },
-    "pulseaudio#input": {
-      "format": "{format_source}",
-      "format-source": "",
-      "format-source-muted": "",
-      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
-    },
-    "hyprland/language": {
-      "format": "⌨ {}"
-    },
-    "custom/fcitx5": {
-      "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
-      "format": "{}",
-      "return-type": "json",
-      "on-click": "fcitx5-remote -t"
-    },
+
     "cpu": {
       "interval": 1,
       "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
@@ -188,7 +143,7 @@
     },
     "memory": {
       "interval": 1,
-      "format": " {}%",
+      "format": "\uf2db {}%",
       "on-click": "kitty --class float-general -e btop"
     },
     "clock": {
@@ -201,11 +156,11 @@
         "weeks-pos": "right",
         "on-scroll": 1,
         "format": {
-          "months": "<span color='#f4dbd6'><b>{}</b></span>",
-          "days": "<span color='#cad3f5'><b>{}</b></span>",
-          "weeks": "<span color='#8bd5ca'><b>W{}</b></span>",
+          "months":   "<span color='#f4dbd6'><b>{}</b></span>",
+          "days":     "<span color='#cad3f5'><b>{}</b></span>",
+          "weeks":    "<span color='#8bd5ca'><b>W{}</b></span>",
           "weekdays": "<span color='#eed49f'><b>{}</b></span>",
-          "today": "<span color='#f5bde6'><b><u>{}</u></b></span>"
+          "today":    "<span color='#f5bde6'><b><u>{}</u></b></span>"
         }
       },
       "actions": {
@@ -215,38 +170,28 @@
       }
     }
   },
+
   {
     "output": "HDMI-A-1",
+    "include": ["~/.config/waybar/modules.jsonc"],
     "layer": "bottom",
     "position": "bottom",
     "height": 32,
     "margin-bottom": 8,
     "margin-left": 380,
     "margin-right": 380,
-    "modules-left": [
-      "hyprland/window"
-    ],
-    "modules-right": [
-      "tray",
-      "group/system"
-    ],
+    "modules-left": ["hyprland/window"],
+    "modules-right": ["tray", "group/system"],
+
     "hyprland/window": {
       "format": "{title}",
       "max-length": 50,
       "separate-outputs": true
     },
+
     "group/system": {
       "orientation": "horizontal",
-      "modules": [
-        "group/sound",
-        "hyprland/language",
-        "custom/fcitx5",
-        "clock"
-      ]
-    },
-    "tray": {
-      "icon-size": 14,
-      "spacing": 6
+      "modules": ["group/sound", "hyprland/language", "custom/fcitx5", "clock"]
     },
     "group/sound": {
       "orientation": "horizontal",
@@ -255,45 +200,9 @@
         "transition-left-to-right": true,
         "children-class": "drawer-child"
       },
-      "modules": [
-        "pulseaudio#output",
-        "pulseaudio/slider",
-        "pulseaudio#input"
-      ]
+      "modules": ["pulseaudio#output", "pulseaudio/slider", "pulseaudio#input"]
     },
-    "pulseaudio/slider": {
-      "min": 0,
-      "max": 100,
-      "orientation": ""
-    },
-    "pulseaudio#output": {
-      "format": "{icon}",
-      "format-muted": "",
-      "format-icons": {
-        "default": ["", "", ""]
-      },
-      "scroll-step": 5,
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh output",
-      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-      "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-    },
-    "pulseaudio#input": {
-      "format": "{format_source}",
-      "format-source": "",
-      "format-source-muted": "",
-      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
-    },
-    "hyprland/language": {
-      "format": "⌨ {}"
-    },
-    "custom/fcitx5": {
-      "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
-      "format": "{}",
-      "return-type": "json",
-      "on-click": "fcitx5-remote -t"
-    },
+
     "clock": {
       "format": "{:%R}",
       "format-alt": "{:%a %b %d  %R}",
@@ -304,11 +213,11 @@
         "weeks-pos": "right",
         "on-scroll": 1,
         "format": {
-          "months": "<span color='#f4dbd6'><b>{}</b></span>",
-          "days": "<span color='#cad3f5'><b>{}</b></span>",
-          "weeks": "<span color='#8bd5ca'><b>W{}</b></span>",
+          "months":   "<span color='#f4dbd6'><b>{}</b></span>",
+          "days":     "<span color='#cad3f5'><b>{}</b></span>",
+          "weeks":    "<span color='#8bd5ca'><b>W{}</b></span>",
           "weekdays": "<span color='#eed49f'><b>{}</b></span>",
-          "today": "<span color='#f5bde6'><b><u>{}</u></b></span>"
+          "today":    "<span color='#f5bde6'><b><u>{}</u></b></span>"
         }
       },
       "actions": {
