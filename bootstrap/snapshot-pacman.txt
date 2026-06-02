@@ -92,7 +92,6 @@ mako
 man-db
 mpv
 mtpfs
-nemo
 neovim
 networkmanager
 noto-fonts-cjk
@@ -121,6 +120,7 @@ strace
 sudo
 systemd-resolvconf
 telegram-desktop
+thunar
 ttf-hack-nerd
 ueberzugpp
 vlc
