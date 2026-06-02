@@ -92,6 +92,7 @@ obsidian
 openvpn
 otf-font-awesome
 pacman-contrib
+papirus-icon-theme
 pavucontrol
 pipewire
 polkit-kde-agent

@@ -1,5 +1,6 @@
 bibata-cursor-theme
 brave-bin
+catppuccin-gtk-theme-mocha
 claude-code
 crush-bin
 depot-tools-git
@@ -7,6 +8,7 @@ httpdirfs
 jmtpfs
 lmstudio
 oh-my-posh
+papirus-folders-catppuccin-git
 pgadmin4-bin
 postman-bin
 proton-ge-custom-bin

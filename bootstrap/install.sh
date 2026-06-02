@@ -2,7 +2,10 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako fuzzel ohmyposh btop fastfetch)
+STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako fuzzel ohmyposh btop fastfetch gtk)
+
+GTK_THEME=catppuccin-mocha-blue-standard+default
+PAPIRUS_FOLDER_COLOR=cat-mocha-blue
 
 log()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 warn() { printf '\033[1;33m==>\033[0m %s\n' "$*" >&2; }
@@ -65,6 +68,28 @@ stow_all() {
 	done
 }
 
+theme_gtk() {
+	if command -v papirus-folders &>/dev/null; then
+		log "Recoloring Papirus folders to $PAPIRUS_FOLDER_COLOR"
+		sudo papirus-folders -C "$PAPIRUS_FOLDER_COLOR" -t Papirus-Dark
+	else
+		warn "papirus-folders not found; skipping folder recolor"
+	fi
+
+	# Link GTK4 theme assets so libadwaita apps honor the theme.
+	# Skipped when stow folded gtk-4.0 into a symlink (linking would write into the repo).
+	local gtk4="$HOME/.config/gtk-4.0"
+	local src="/usr/share/themes/$GTK_THEME/gtk-4.0"
+	if [[ -L $gtk4 ]]; then
+		warn "~/.config/gtk-4.0 is a stow symlink; link GTK4 assets manually for libadwaita apps"
+	elif [[ -d $src && -d $gtk4 ]]; then
+		log "Linking GTK4 theme assets"
+		ln -sf "$src/gtk.css"      "$gtk4/gtk.css"
+		ln -sf "$src/gtk-dark.css" "$gtk4/gtk-dark.css"
+		ln -sfn "$src/assets"      "$gtk4/assets"
+	fi
+}
+
 ensure_login_shell_zsh() {
 	local zsh_path=/usr/bin/zsh
 	if [[ ! -x $zsh_path ]]; then
@@ -108,6 +133,7 @@ main() {
 	install_pacman
 	install_aur
 	stow_all
+	theme_gtk
 	ensure_login_shell_zsh
 	print_post_install
 }
