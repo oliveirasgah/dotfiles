@@ -14,8 +14,8 @@
   },
 
   "pulseaudio#output": {
-    "format": "{icon}",
-    "format-muted": "\uf026",
+    "format": "<span font_family='JetBrainsMono Nerd Font' size='x-large'>{icon}</span>",
+    "format-muted": "<span font_family='JetBrainsMono Nerd Font' size='x-large'>\uf026</span>",
     "format-icons": {
       "default": ["\uf027", "\uf027", "\uf028"]
     },
@@ -28,14 +28,14 @@
 
   "pulseaudio#input": {
     "format": "{format_source}",
-    "format-source": "\uf130",
-    "format-source-muted": "\uf131",
+    "format-source": "<span font_family='JetBrainsMono Nerd Font' size='x-large'>\uf130</span>",
+    "format-source-muted": "<span font_family='JetBrainsMono Nerd Font' size='x-large'>\uf131</span>",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-right": "~/.config/waybar/scripts/sound-picker.sh input"
   },
 
   "hyprland/language": {
-    "format": "⌨ {}"
+    "format": "<span font_family='JetBrainsMono Nerd Font' size='large'>⌨</span> {}"
   },
 
   "custom/fcitx5": {
