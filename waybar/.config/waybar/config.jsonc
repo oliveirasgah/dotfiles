@@ -30,8 +30,8 @@
       "format": "{icon}",
       "format-icons": {
         "default": "·",
-        "active": "<span font_family='JetBrainsMono Nerd Font' size='large'></span>",
-        "urgent": "<span font_family='JetBrainsMono Nerd Font' size='large'></span>"
+        "active": "",
+        "urgent": ""
       },
       "all-outputs": false,
       "persistent-workspaces": {
@@ -39,9 +39,9 @@
       }
     },
     "mpris": {
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'>{player_icon} {status_icon}</span>  {dynamic}",
-      "format-paused": "<span font_family='JetBrainsMono Nerd Font' size='large'>{player_icon} {status_icon}</span>  <i>{dynamic}</i>",
-      "format-stopped": "<span font_family='JetBrainsMono Nerd Font' size='large'>{player_icon} {status_icon}</span>",
+      "format": "{player_icon} {status_icon}  {dynamic}",
+      "format-paused": "{player_icon} {status_icon}  <i>{dynamic}</i>",
+      "format-stopped": "{player_icon} {status_icon}",
       "player-icons": {
         "default": "\uf001",
         "spotify": "\uf1bc",
@@ -69,12 +69,12 @@
       "tooltip": false
     },
     "custom/mpris-prev": {
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'></span>",
+      "format": "",
       "on-click": "playerctl previous",
       "tooltip": false
     },
     "custom/mpris-next": {
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'></span>",
+      "format": "",
       "on-click": "playerctl next",
       "tooltip": false
     },
@@ -107,7 +107,7 @@
       "on-click": "kitty --class float-general -e sh -c 'curl -s wttr.in; printf \"\\nPress any key…\"; read -n 1 -s -r'"
     },
     "custom/updates": {
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'>\uf019</span>",
+      "format": "\uf019",
       "exec": "~/.config/waybar/scripts/pacman-updates.sh",
       "return-type": "json",
       "interval": 1800,
@@ -116,7 +116,7 @@
       "tooltip": true
     },
     "custom/mako": {
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'>\uf0f3</span>",
+      "format": "\uf0f3",
       "exec": "~/.config/waybar/scripts/mako.sh count",
       "return-type": "json",
       "interval": 30,
@@ -143,7 +143,7 @@
     },
     "memory": {
       "interval": 1,
-      "format": "<span font_family='JetBrainsMono Nerd Font' size='large'>\uf2db</span> {}%",
+      "format": "\uf2db {}%",
       "on-click": "kitty --class float-general -e btop"
     },
     "clock": {

@@ -51,7 +51,7 @@ case "$code" in
   *)                                                              icon="";  klass="unknown" ;;
 esac
 
-text="<span font_family='Symbols Nerd Font' size='large'>$icon</span> $temp°"
+text="$icon $temp°"
 tooltip="$(printf '<b>%s, %s</b>\n%s · %s°C (feels %s°)\nLow %s° · High %s°\n %s%%   %s km/h %s' \
   "$city" "$country" "$desc" "$temp" "$feels" "$mint" "$maxt" "$humidity" "$wind" "$wdir")"
 
