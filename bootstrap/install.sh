@@ -90,6 +90,18 @@ theme_gtk() {
 	fi
 }
 
+install_sddm_config() {
+	local src="$DOTFILES/bootstrap/sddm.conf.d/zz-pixie.conf"
+	local dest=/etc/sddm.conf.d/zz-pixie.conf
+	[[ -f $src ]] || { warn "Missing $src; skipping SDDM config"; return; }
+	if [[ -f $dest ]] && cmp -s "$src" "$dest"; then
+		log "SDDM config already in place"
+		return
+	fi
+	log "Installing SDDM config (pixie theme + Bibata cursor)"
+	sudo install -Dm644 "$src" "$dest"
+}
+
 ensure_login_shell_zsh() {
 	local zsh_path=/usr/bin/zsh
 	if [[ ! -x $zsh_path ]]; then
@@ -117,10 +129,10 @@ print_post_install() {
 	       \$EDITOR ~/.gitconfig.local
 
 	  2. Enable services:
-	       sudo systemctl enable --now gdm docker
+	       sudo systemctl enable --now sddm docker
 	       systemctl --user enable --now pipewire wireplumber
 
-	  3. Log out and back in to start a Hyprland session via GDM.
+	  3. Log out and back in to start a Hyprland session via SDDM.
 	EOF
 }
 
@@ -134,6 +146,7 @@ main() {
 	install_aur
 	stow_all
 	theme_gtk
+	install_sddm_config
 	ensure_login_shell_zsh
 	print_post_install
 }

@@ -23,7 +23,6 @@ fuzzel
 fzf
 gamemode
 gamescope
-gdm
 git
 gst-plugins-ugly
 gvfs-gphoto2
@@ -107,6 +106,7 @@ ripgrep
 ruby-build
 rust
 satty
+sddm
 steam
 stow
 strace
@@ -123,6 +123,7 @@ wl-clipboard
 wlr-randr
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
+xorg-server
 yazi
 zip
 zsh
