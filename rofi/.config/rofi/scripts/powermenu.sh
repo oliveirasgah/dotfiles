@@ -22,7 +22,7 @@ chosen="$(printf '%s\n%s\n%s\n%s\n%s\n' \
 case "$chosen" in
   "$lock")     hyprlock & disown ;;
   "$suspend")  systemctl suspend ;;
-  "$logout")   hyprctl dispatch exit ;;
+  "$logout")   hyprctl eval 'hl.dispatch(hl.dsp.exit())' ;;
   "$reboot")   systemctl reboot ;;
   "$shutdown") systemctl poweroff ;;
 esac
