@@ -324,5 +324,8 @@ hl.on("hyprland.start", function()
     -- Pin XWayland's "primary output" to DP-1 so Steam (and any XRANDR client)
     -- reports the ultrawide as primary instead of HDMI-A-1.
     hl.exec_cmd([[sh -c "until xrandr --output DP-1 --primary 2>/dev/null; do sleep 0.5; done"]])
-    hl.exec_cmd("hyprctl dispatch workspace 1")
+    -- Switch focus to workspace 1 (DP-1) on startup. `hyprctl dispatch` is
+    -- broken under the Lua config, and `hl.dsp.focus(...)` alone only builds a
+    -- descriptor — `hl.dispatch(...)` is what actually fires it.
+    hl.dispatch(hl.dsp.focus({ workspace = 1 }))
 end)
