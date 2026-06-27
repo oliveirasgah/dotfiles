@@ -102,6 +102,21 @@ install_sddm_config() {
 	sudo install -Dm644 "$src" "$dest"
 }
 
+install_sddm_weston() {
+	# weston.ini backs SDDM's Wayland greeter: pins the login to the main
+	# monitor (DP-1) and gives weston a cursor theme. Referenced by the
+	# CompositorCommand in zz-pixie.conf.
+	local src="$DOTFILES/bootstrap/sddm/weston.ini"
+	local dest=/etc/sddm/weston.ini
+	[[ -f $src ]] || { warn "Missing $src; skipping SDDM weston config"; return; }
+	if [[ -f $dest ]] && cmp -s "$src" "$dest"; then
+		log "SDDM weston config already in place"
+		return
+	fi
+	log "Installing SDDM weston config (Wayland greeter layout)"
+	sudo install -Dm644 "$src" "$dest"
+}
+
 ensure_login_shell_zsh() {
 	local zsh_path=/usr/bin/zsh
 	if [[ ! -x $zsh_path ]]; then
@@ -147,6 +162,7 @@ main() {
 	stow_all
 	theme_gtk
 	install_sddm_config
+	install_sddm_weston
 	ensure_login_shell_zsh
 	print_post_install
 }
