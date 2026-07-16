@@ -40,7 +40,7 @@ require("snacks").setup({
 -- lualine
 require("lualine").setup({
   options = {
-    theme = "catppuccin",
+    theme = "catppuccin-nvim",
     globalstatus = true,
     disabled_filetypes = { statusline = { "dashboard", "alpha" } },
   },

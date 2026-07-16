@@ -1,12 +1,5 @@
--- venv-selector: manage Python virtual environments
+-- venv-selector: manage Python virtual environments.
+-- Auto-activation is handled by venv-selector's own autocmds (buffer-local
+-- restore, persistent cache restore, and uv detection) registered in setup(),
+-- so no manual cache retrieval is needed.
 require("venv-selector").setup()
-
--- auto-activate venv when opening a project with pyproject.toml
-vim.api.nvim_create_autocmd("VimEnter", {
-  once = true,
-  callback = function()
-    if vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";") ~= "" then
-      require("venv-selector").retrieve_from_cache()
-    end
-  end,
-})
