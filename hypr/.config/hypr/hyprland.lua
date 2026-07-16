@@ -161,6 +161,15 @@ hl.device({
     sensitivity = -0.5,
 })
 
+-- Wacom One by Wacom S: rotate the pen mapping 180° (upside down).
+-- `transform` is NOT honored for pens/styluses (only touchscreens), but the
+-- tablet's `left_handed` flag rotates the mapping a full 180°, which is
+-- exactly upside-down. See wiki Variables → input.tablet.left_handed.
+hl.device({
+    name        = "wacom-one-by-wacom-s-pen",
+    left_handed = true,
+})
+
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -182,6 +191,9 @@ hl.bind(mainMod .. " + F",             hl.dsp.window.fullscreen_state({ internal
 
 -- Browser
 hl.bind(mainMod .. " + B",             hl.dsp.exec_cmd(browser))
+
+-- Tablet output picker (DP-1 / HDMI-A-1 / both screens)
+hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/rofi/scripts/tablet-output.sh"))
 
 -- Toggle fcitx5 layout
 hl.bind(mainMod .. " + CTRL + L",      hl.dsp.exec_cmd("fcitx5-remote -t"))
