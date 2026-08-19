@@ -28,7 +28,7 @@ hl.workspace_rule({ workspace = 10, monitor = "HDMI-A-1", persistent = true, def
 local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "rofi -show drun"
-local browser     = "brave"
+local browser     = "vivaldi"
 local calculator  = "kitty --class float-calc -e qalc"
 
 
