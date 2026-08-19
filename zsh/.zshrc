@@ -52,11 +52,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/gabriel/.lmstudio/bin"
-# End of LM Studio CLI section
-
-
 # Added by ghost init
 export PATH="/home/gabriel/.local/bin:$PATH"
 
