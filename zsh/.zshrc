@@ -56,3 +56,12 @@ unset __conda_setup
 export PATH="$PATH:/home/gabriel/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# Added by ghost init
+export PATH="/home/gabriel/.local/bin:$PATH"
+
+# Initialize zsh completions
+autoload -Uz compinit && compinit -i
+
+# Ghost shell completions
+command -v /home/gabriel/.local/bin/ghost >/dev/null 2>&1 && source <(/home/gabriel/.local/bin/ghost completion zsh)
