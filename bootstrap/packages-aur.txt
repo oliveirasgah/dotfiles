@@ -6,12 +6,10 @@ crush-bin
 depot-tools-git
 httpdirfs
 jmtpfs
-lmstudio
 oh-my-posh
 papirus-folders-catppuccin-git
 pgadmin4-bin
 pixie-sddm-git
-postman-bin
 proton-ge-custom-bin
 simple-mtpfs
 unionfs-fuse

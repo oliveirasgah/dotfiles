@@ -4,7 +4,6 @@ android-tools
 anki
 base
 base-devel
-bitwarden
 btop
 chromium
 code
@@ -101,7 +100,6 @@ npm
 ntfs-3g
 ntfsprogs
 nvidia-open
-obsidian
 openvpn
 otf-font-awesome
 pacman-contrib
@@ -141,6 +139,5 @@ wlr-randr
 xdg-desktop-portal-wlr
 xorg-server
 yazi
-zellij
 zip
 zsh

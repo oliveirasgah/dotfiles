@@ -1,7 +1,6 @@
 7zip
 android-tools
 anki
-bitwarden
 btop
 code
 dbeaver
@@ -87,7 +86,6 @@ noto-fonts-emoji
 npm
 ntfs-3g
 nvidia-open
-obsidian
 openvpn
 otf-font-awesome
 pacman-contrib

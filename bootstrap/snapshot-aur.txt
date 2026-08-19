@@ -27,7 +27,6 @@ libretro-bsnes2014
 libretro-mame2016
 libretro-retrodream
 libsoup
-lmstudio
 oh-my-posh
 oh-my-posh-debug
 oh-my-zsh-git
@@ -39,7 +38,6 @@ plutosvg
 plutosvg-debug
 plutovg
 plutovg-debug
-postman-bin
 proton-ge-custom-bin
 python-git-versioner
 python-pip-system-certs
@@ -49,8 +47,6 @@ simple-mtpfs
 simple-mtpfs-debug
 unionfs-fuse
 unionfs-fuse-debug
-upwork
-upwork-wayland
 vk-hdr-layer-kwin6-git
 vk-hdr-layer-kwin6-git-debug
 wlogout
