@@ -34,7 +34,7 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 2. **Enable system services**:
    ```sh
    sudo systemctl enable --now sddm docker
-   systemctl --user enable --now pipewire wireplumber
+   systemctl --user enable --now pipewire pipewire-pulse wireplumber
    ```
    The login manager is [SDDM](https://github.com/sddm/sddm) with the [pixie](https://github.com/xCaptaiN09/pixie-sddm) theme; `bootstrap/install.sh` deploys `bootstrap/sddm.conf.d/zz-pixie.conf` to `/etc/sddm.conf.d/` (selects the theme and the Bibata cursor).
 3. **Log out and back in** to land in the Hyprland session via SDDM.

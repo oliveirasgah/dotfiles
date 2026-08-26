@@ -145,7 +145,7 @@ print_post_install() {
 
 	  2. Enable services:
 	       sudo systemctl enable --now sddm docker
-	       systemctl --user enable --now pipewire wireplumber
+	       systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 	  3. Log out and back in to start a Hyprland session via SDDM.
 	EOF

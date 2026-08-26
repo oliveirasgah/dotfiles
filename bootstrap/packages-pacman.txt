@@ -92,6 +92,8 @@ pacman-contrib
 papirus-icon-theme
 pavucontrol
 pipewire
+pipewire-audio
+pipewire-pulse
 polkit-kde-agent
 proton-vpn-gtk-app
 python-pip
