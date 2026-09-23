@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Clear the pacman and yay caches, answering "y" to every prompt.
+set -eu
+
+# pacman -Scc only unlink()s cache entries, so it can't remove the download-* dirs
+# it leaves behind. Remove them explicitly.
+sudo rm -rf /var/cache/pacman/pkg/download-*
+
+# yay -Scc runs sudo pacman -Scc, then cleans the AUR cache.
+yes | yay -Scc

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Full system update (repo + AUR) followed by a complete cache cleanup.
+set -eu
+
+yay -Syyu
+
+"$(dirname "$0")/cleanup"

@@ -14,7 +14,7 @@ alias lta='eza -a --tree --icons=always'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
-alias cleanup='yay -Scc'
+alias cleanup='~/.local/bin/cleanup'
 
 # -----------------------------------------------------
 # Git
@@ -38,7 +38,7 @@ alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 # -----------------------------------------------------
 # Updates
 # -----------------------------------------------------
-alias allupdates='yay -Syyu'
+alias allupdates='~/.local/bin/allupdates'
 
 # -----------------------------------------------------
 # yazi
