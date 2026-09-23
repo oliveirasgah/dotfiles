@@ -112,7 +112,7 @@
       "return-type": "json",
       "interval": 1800,
       "signal": 9,
-      "on-click": "kitty --class float-general -e sh -c 'yay -Syu; read -n 1 -s -r -p \"Done. Press any key…\"; pkill -RTMIN+9 waybar'",
+      "on-click": "kitty --class float-general -e sh -c '~/.local/bin/allupdates; read -n 1 -s -r -p \"Done. Press any key…\"; pkill -RTMIN+9 waybar'",
       "tooltip": true
     },
     "custom/mako": {
