@@ -1,9 +1,6 @@
--- Translated from hyprland.conf for Hyprland 0.55+ Lua configs.
+-- Hyprland 0.56+ Lua config.
 -- API reference: https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.lua
--- Wiki:          https://wiki.hypr.land/Configuring/Start/
---
--- The old hyprland.conf is kept on disk as a fallback / reference; Hyprland
--- prefers this file when present. Delete this file to revert.
+-- Wiki:          https://wiki.hypr.land/configuring/
 
 ------------------
 ---- MONITORS ----
@@ -12,9 +9,6 @@
 hl.monitor({ output = "DP-1",     mode = "3440x1440@160", position = "0x0",  scale = 1 })
 hl.monitor({ output = "HDMI-A-1", mode = "2560x1080@75",  position = "3440x-560", scale = 1, transform = 1 })
 
--- TODO(verify): monitor/default/persistent field names on workspace_rule.
--- Hyprlang used `workspace = 1, monitor:DP-1, default:true`; this is my best
--- mapping but the example config doesn't cover this exact case.
 for i = 1, 9 do
     hl.workspace_rule({ workspace = i, monitor = "DP-1", default = (i == 1) or nil })
 end
@@ -96,7 +90,7 @@ hl.config({
     },
 
     cursor = {
-        no_hardware_cursors = true,
+        no_hardware_cursors = 1,
     },
 })
 
@@ -129,10 +123,8 @@ hl.animation({ leaf = "specialWorkspace",    enabled = true, speed = 3, bezier =
 hl.animation({ leaf = "specialWorkspaceIn",  enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
 hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
 
--- Active border gradient rotates continuously. The `loop` field is not in the
--- canonical Lua example (as of 0.55); verify on first reload — if Hyprland
--- rejects it, drop `loop` and the gradient will just animate once on focus.
-hl.animation({ leaf = "borderangle", enabled = true, speed = 30, bezier = "linear", loop = true })
+-- Active border gradient rotates continuously.
+hl.animation({ leaf = "borderangle", enabled = true, speed = 30, bezier = "linear", style = "loop" })
 
 
 ---------------
@@ -185,7 +177,7 @@ hl.bind(mainMod .. " + CTRL + RETURN", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + C",             hl.dsp.exec_cmd(calculator))
 hl.bind(mainMod .. " + P",             hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + CTRL + J",      hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + CTRL + K",      hl.dsp.layout("swapsplit"))    -- TODO(verify): swapsplit not in example
+hl.bind(mainMod .. " + CTRL + K",      hl.dsp.layout("swapsplit"))
 -- Fake fullscreen (Hyprland renders fullscreen, client thinks it isn't).
 hl.bind(mainMod .. " + F",             hl.dsp.window.fullscreen_state({ internal = 2, client = 0, action = "toggle" }))
 
@@ -221,7 +213,6 @@ for i = 1, 9 do
 end
 
 -- Move active window between monitors
--- TODO(verify): monitor target syntax for window.move
 hl.bind(mainMod .. " + 0",             hl.dsp.window.move({ monitor = "+1" }))
 
 -- Special workspace (scratchpad)
@@ -283,7 +274,6 @@ hl.window_rule({
 })
 
 -- General floating helper (kitty --class float-general etc.)
--- TODO(verify): exact field names for size/center on window_rule
 hl.window_rule({
     name   = "float-general",
     match  = { class = "float-general" },
@@ -302,9 +292,6 @@ hl.window_rule({
 })
 
 -- Satty screenshot: float, pin to monitor 1
--- TODO(verify): submap API not in example config. Hyprlang had:
---   submap = satty / bind = , escape, killactive / bind = , escape, submap, reset / submap = reset
--- Skipping submap for now; the float rules below still apply.
 hl.window_rule({
     name    = "satty-float",
     match   = { title = "satty" },
@@ -313,7 +300,23 @@ hl.window_rule({
     monitor = 1,
 })
 
--- TODO(verify): blur field on layer_rule
+-- While satty is open, ESCAPE closes it. The submap is entered/left from
+-- satty's own open/close events, so ESCAPE isn't hijacked during hyprshot's
+-- region selection.
+hl.define_submap("satty", "reset", function()
+    hl.bind("Escape", hl.dsp.window.close({ window = "title:satty" }))
+end)
+
+local function is_satty(w) return w and w.title and w.title:find("satty") end
+
+hl.on("window.open", function(w)
+    if is_satty(w) then hl.dispatch(hl.dsp.submap("satty")) end
+end)
+
+hl.on("window.close", function(w)
+    if is_satty(w) then hl.dispatch(hl.dsp.submap("reset")) end
+end)
+
 hl.layer_rule({
     name  = "rofi-blur",
     match = { namespace = "rofi" },
