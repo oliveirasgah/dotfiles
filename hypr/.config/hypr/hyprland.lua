@@ -91,6 +91,9 @@ hl.config({
 
     cursor = {
         no_hardware_cursors = 1,
+        -- Start the cursor in the middle of DP-1 (workspace 1's monitor).
+        -- Otherwise it lands on HDMI-A-1, which is detected first.
+        default_monitor     = "DP-1",
     },
 })
 
