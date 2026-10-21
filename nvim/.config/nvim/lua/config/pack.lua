@@ -33,7 +33,7 @@ vim.pack.add({
   -- Editor
   gh("nvim-neo-tree/neo-tree.nvim"),
   gh("lewis6991/gitsigns.nvim"),
-  gh("echasnovski/mini.nvim"), -- mini.ai, mini.pairs, mini.icons (replaces nvim-web-devicons)
+  gh("nvim-mini/mini.nvim"), -- mini.ai, mini.pairs, mini.icons (replaces nvim-web-devicons)
   gh("folke/flash.nvim"),
   gh("folke/todo-comments.nvim"),
   gh("folke/trouble.nvim"),

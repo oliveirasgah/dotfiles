@@ -75,8 +75,18 @@ require("mason").setup({
     border = "rounded",
     icons = { package_installed = "✓", package_pending = "➜", package_uninstalled = "✗" },
   },
-  ensure_installed = { "dart-debug-adapter", "debugpy" },
 })
+
+-- mason itself has no ensure_installed; install the debug adapters by hand
+local registry = require("mason-registry")
+registry.refresh(function()
+  for _, name in ipairs({ "dart-debug-adapter", "debugpy" }) do
+    local ok, pkg = pcall(registry.get_package, name)
+    if ok and not pkg:is_installed() then
+      pkg:install()
+    end
+  end
+end)
 
 -- mason-lspconfig: rust_analyzer excluded (handled by rustaceanvim)
 require("mason-lspconfig").setup({
@@ -92,5 +102,4 @@ require("mason-lspconfig").setup({
     "sqlls",
     "ts_ls",
   },
-  automatic_installation = true,
 })
