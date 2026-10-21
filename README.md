@@ -50,10 +50,11 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 | `hypr`     | `~/.config/hypr/` |
 | `waybar`   | `~/.config/waybar/` |
 | `mako`     | `~/.config/mako/` |
-| `fuzzel`   | `~/.config/fuzzel/` |
+| `rofi`     | `~/.config/rofi/` |
 | `ohmyposh` | `~/.config/ohmyposh/` |
 | `btop`     | `~/.config/btop/` |
 | `fastfetch`| `~/.config/fastfetch/` |
+| `gtk`      | `~/.gtkrc-2.0`, `~/.config/gtk-3.0/`, `~/.config/gtk-4.0/` |
 
 Add only what you want: `cd ~/dotfiles && stow zsh git nvim`.
 Remove a package: `stow -D zsh`.

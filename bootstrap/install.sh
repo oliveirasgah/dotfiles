@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako fuzzel ohmyposh btop fastfetch gtk)
+STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako rofi ohmyposh btop fastfetch gtk)
 
 GTK_THEME=catppuccin-mocha-blue-standard+default
 PAPIRUS_FOLDER_COLOR=cat-mocha-blue

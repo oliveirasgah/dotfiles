@@ -2,8 +2,6 @@
 android-tools
 anki
 btop
-code
-dbeaver
 discord
 docker
 docker-compose
@@ -18,7 +16,6 @@ fcitx5-mozc
 fcitx5-qt
 fd
 firefox
-fuzzel
 fzf
 gamemode
 gamescope
@@ -28,13 +25,13 @@ gvfs-gphoto2
 gvfs-mtp
 handbrake
 hyprland
-hypridle
 hyprlock
 hyprpaper
 hyprshot
 imagemagick
 imv
 jdk-openjdk
+jq
 kitty
 krita
 lib32-gamemode
@@ -48,7 +45,6 @@ libretro-beetle-supergrafx
 libretro-blastem
 libretro-bsnes
 libretro-bsnes-hd
-libretro-bsnes2014
 libretro-core-info
 libretro-desmume
 libretro-dolphin
@@ -57,7 +53,6 @@ libretro-gambatte
 libretro-genesis-plus-gx
 libretro-kronos
 libretro-mame
-libretro-mame2016
 libretro-melonds
 libretro-mesen
 libretro-mesen-s
@@ -81,7 +76,6 @@ mako
 mpv
 mtpfs
 neovim
-noto-fonts-cjk
 noto-fonts-emoji
 npm
 ntfs-3g
@@ -94,6 +88,7 @@ pavucontrol
 pipewire
 pipewire-audio
 pipewire-pulse
+playerctl
 polkit-kde-agent
 proton-vpn-gtk-app
 python-pip
@@ -103,11 +98,11 @@ retroarch-assets-glui
 retroarch-assets-ozone
 retroarch-assets-xmb
 ripgrep
+rofi
 ruby-build
 rust
 satty
 sddm
-steam
 stow
 strace
 telegram-desktop
@@ -122,8 +117,8 @@ wireplumber
 wl-clipboard
 wlr-randr
 xdg-desktop-portal-hyprland
-xdg-desktop-portal-wlr
 xorg-server
+xorg-xrandr
 yazi
 zip
 zsh

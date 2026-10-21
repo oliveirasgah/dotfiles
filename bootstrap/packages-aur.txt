@@ -1,16 +1,11 @@
 bibata-cursor-theme
-brave-bin
 catppuccin-gtk-theme-mocha
 claude-code
-crush-bin
 depot-tools-git
 httpdirfs
 jmtpfs
 oh-my-posh
 papirus-folders-catppuccin-git
-pgadmin4-bin
 pixie-sddm-git
-proton-ge-custom-bin
 simple-mtpfs
 unionfs-fuse
-wlogout
