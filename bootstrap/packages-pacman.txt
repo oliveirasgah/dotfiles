@@ -27,6 +27,7 @@ handbrake
 hyprland
 hyprlock
 hyprpaper
+hyprpolkitagent
 hyprshot
 imagemagick
 imv
@@ -89,7 +90,6 @@ pipewire
 pipewire-audio
 pipewire-pulse
 playerctl
-polkit-kde-agent
 proton-vpn-gtk-app
 python-pip
 rbenv

@@ -338,6 +338,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprpaper.bash")
     hl.exec_cmd("mako")
+    -- Polkit agent for GUI password prompts (ships as a user service).
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/mako.sh tracker")
     -- Pin XWayland's "primary output" to DP-1 so Steam (and any XRANDR client)
     -- reports the ultrawide as primary instead of HDMI-A-1.
