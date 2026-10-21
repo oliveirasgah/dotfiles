@@ -59,7 +59,8 @@ vim.pack.add({
   gh("b0o/SchemaStore.nvim"),
 
   -- Completion
-  gh("saghen/blink.cmp"),
+  -- Pinned to v1: main is the unreleased v2, which needs blink.lib and a local build
+  { src = gh("saghen/blink.cmp"), version = vim.version.range("1") },
   gh("rafamadriz/friendly-snippets"),
 
   -- Formatting & Linting
