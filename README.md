@@ -43,7 +43,7 @@ The script is idempotent — re-running it is a no-op once everything is in plac
 
 | Package    | Symlinks |
 |------------|----------|
-| `zsh`      | `~/.zshrc`, `~/.zprofile`, `~/.zlogout`, `~/.xprofile` |
+| `zsh`      | `~/.zshrc`, `~/.zprofile`, `~/.zlogout` |
 | `git`      | `~/.gitconfig` (identity loaded from `~/.gitconfig.local`) |
 | `nvim`     | `~/.config/nvim/` |
 | `kitty`    | `~/.config/kitty/` |

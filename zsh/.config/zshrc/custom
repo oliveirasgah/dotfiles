@@ -2,7 +2,7 @@
 eval "$(rbenv init - --no-rehash zsh)"
 
 # Set Java configuration
-export JAVA_HOME="/usr/lib/jvm/java-26-openjdk"
+export JAVA_HOME="/usr/lib/jvm/default"
 export JAVA_OPTS="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED"
 
 # Set Anthropic API key
