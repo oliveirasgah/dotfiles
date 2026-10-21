@@ -112,11 +112,14 @@ map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
 map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Signature help" })
 map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Diagnostics → loclist" })
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "LSP info" })
+local function diagnostic_float(_, bufnr)
+  vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+end
 map("n", "]d", function()
-  vim.diagnostic.goto_next()
+  vim.diagnostic.jump({ count = 1, on_jump = diagnostic_float })
 end, { desc = "Next diagnostic" })
 map("n", "[d", function()
-  vim.diagnostic.goto_prev()
+  vim.diagnostic.jump({ count = -1, on_jump = diagnostic_float })
 end, { desc = "Previous diagnostic" })
 
 -- Formatting
