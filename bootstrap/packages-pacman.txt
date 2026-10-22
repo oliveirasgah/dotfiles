@@ -32,6 +32,7 @@ hyprshot
 imagemagick
 imv
 jdk-openjdk
+jdk21-openjdk
 jq
 kitty
 krita

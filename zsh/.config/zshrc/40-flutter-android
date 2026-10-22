@@ -1,0 +1,9 @@
+# -----------------------------------------------------
+# FLUTTER / ANDROID
+# -----------------------------------------------------
+# Installed by ~/dotfiles/bootstrap/flutter-android.sh.
+# JDK 21 for Gradle is set via `flutter config --jdk-dir`,
+# so JAVA_HOME (in custom) stays on the system default.
+
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$HOME/development/flutter/bin:$HOME/.pub-cache/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"

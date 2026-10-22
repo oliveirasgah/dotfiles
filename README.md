@@ -39,6 +39,17 @@ The script is idempotent — re-running it is a no-op once everything is in plac
    The login manager is [SDDM](https://github.com/sddm/sddm) with the [pixie](https://github.com/xCaptaiN09/pixie-sddm) theme; `bootstrap/install.sh` deploys `bootstrap/sddm.conf.d/zz-pixie.conf` to `/etc/sddm.conf.d/` (selects the theme and the Bibata cursor).
 3. **Log out and back in** to land in the Hyprland session via SDDM.
 
+## Flutter + Android toolchain (optional)
+
+Not part of `install.sh`. Run it separately when the machine needs it:
+
+```sh
+./bootstrap/flutter-android.sh          # Flutter 3.47.5
+./bootstrap/flutter-android.sh 3.48.0   # or another Flutter tag
+```
+
+It installs `jdk21-openjdk`, clones Flutter pinned to the given tag into `~/development/flutter`, installs the Android cmdline-tools (sha1-verified) plus `platform-tools`, `platforms;android-36` and `build-tools;36.0.0` into `~/Android/Sdk`, prompts for the SDK licenses, and points Flutter at JDK 21 (`flutter config --jdk-dir`) without changing the system default JDK. `PATH` and `ANDROID_HOME` come from `zsh/.config/zshrc/40-flutter-android`. The NDK is fetched by Gradle on the first build.
+
 ## Stow packages
 
 | Package    | Symlinks |
