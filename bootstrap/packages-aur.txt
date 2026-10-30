@@ -4,6 +4,7 @@ claude-code
 depot-tools-git
 httpdirfs
 jmtpfs
+networkmanager-libreswan
 oh-my-posh
 papirus-folders-catppuccin-git
 pixie-sddm-git

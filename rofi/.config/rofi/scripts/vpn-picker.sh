@@ -43,6 +43,12 @@ vpn_import() {
   local file type out uuid
   file="$(zenity --file-selection --title="Import VPN config" \
     --file-filter='VPN configs | *.conf *.ovpn' 2>/dev/null)" || return
+  # FortiClient exports are XML, often with a .conf name; NM can't import them.
+  if head -c 512 "$file" | grep -q '<forticlient_configuration'; then
+    notify-send "VPN" "FortiClient config: NetworkManager can't import it."$'\n'"For RCC run ~/dotfiles/bootstrap/vpn-rcc.sh"
+    return
+  fi
+
   case "$file" in
     *.conf) type="wireguard" ;;
     *.ovpn) type="openvpn" ;;
