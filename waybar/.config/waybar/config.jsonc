@@ -82,6 +82,7 @@
     "group/system": {
       "orientation": "horizontal",
       "modules": [
+        "custom/vpn",
         "custom/weather",
         "custom/updates",
         "custom/mako",
@@ -191,7 +192,7 @@
 
     "group/system": {
       "orientation": "horizontal",
-      "modules": ["group/sound", "hyprland/language", "custom/fcitx5", "clock"]
+      "modules": ["custom/vpn", "group/sound", "hyprland/language", "custom/fcitx5", "clock"]
     },
     "group/sound": {
       "orientation": "horizontal",

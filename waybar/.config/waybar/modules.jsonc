@@ -38,6 +38,16 @@
     "format": "⌨ {}"
   },
 
+  "custom/vpn": {
+    "exec": "~/.config/waybar/scripts/vpn-watch.sh",
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "on-click": "~/.config/rofi/scripts/vpn-picker.sh",
+    "on-click-right": "~/.config/rofi/scripts/vpn-picker.sh down",
+    "on-click-middle": "protonvpn-app"
+  },
+
   "custom/fcitx5": {
     "exec": "~/.config/waybar/scripts/fcitx5-watch.sh",
     "format": "{}",

@@ -78,6 +78,7 @@ mako
 mpv
 mtpfs
 neovim
+nm-connection-editor
 noto-fonts-emoji
 npm
 ntfs-3g
@@ -121,5 +122,6 @@ xdg-desktop-portal-hyprland
 xorg-server
 xorg-xrandr
 yazi
+zenity
 zip
 zsh

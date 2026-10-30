@@ -190,6 +190,9 @@ hl.bind(mainMod .. " + B",             hl.dsp.exec_cmd(browser))
 -- Tablet output picker (DP-1 / HDMI-A-1 / both screens)
 hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/rofi/scripts/tablet-output.sh"))
 
+-- VPN picker (NetworkManager WireGuard / OpenVPN)
+hl.bind(mainMod .. " + CTRL + V",      hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/rofi/scripts/vpn-picker.sh"))
+
 -- Toggle fcitx5 layout
 hl.bind(mainMod .. " + CTRL + L",      hl.dsp.exec_cmd("fcitx5-remote -t"))
 

@@ -115,6 +115,29 @@ window#waybar {
   -gtk-icon-effect: highlight;
 }
 
+/* ── VPN (NetworkManager; glows when connected) ───────────── */
+#custom-vpn {
+  padding: 0 8px;
+  font-size: 14px;
+}
+#custom-vpn.disconnected {
+  color: @overlay0;
+}
+#custom-vpn.connecting {
+  color: @yellow;
+  animation: pulse 1.1s ease-in-out infinite;
+}
+#custom-vpn.connected {
+  color: @green;
+  text-shadow: 0 0 8px alpha(@green, 0.7);
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1.0; }
+  100% { opacity: 0.4; }
+}
+
 /* ── Weather (wttr.in) ────────────────────────────────────── */
 #custom-weather {
   color: @sapphire;
