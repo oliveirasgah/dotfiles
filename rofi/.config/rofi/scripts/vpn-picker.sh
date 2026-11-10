@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Rofi-based picker for NetworkManager VPN connections (WireGuard + plugin
-# VPNs such as OpenVPN). Only one VPN is kept active at a time.
+# VPNs such as OpenVPN and libreswan). Only one VPN is kept active at a time.
+# FortiClient exports are handed to bootstrap/vpn-forticlient.sh on import.
 # Usage: vpn-picker.sh [menu|down]
 #   menu (default) → list connections + import / Proton / editor actions
 #   down           → disconnect every active VPN
@@ -42,10 +43,14 @@ vpn_up() {
 vpn_import() {
   local file type out uuid
   file="$(zenity --file-selection --title="Import VPN config" \
-    --file-filter='VPN configs | *.conf *.ovpn' 2>/dev/null)" || return
-  # FortiClient exports are XML, often with a .conf name; NM can't import them.
+    --file-filter='VPN configs | *.conf *.ovpn *.xml' 2>/dev/null)" || return
+  # FortiClient exports are XML, often with a .conf name, and NM can't import
+  # them. The importer asks for the pre-shared key and sudo, so it runs in a
+  # terminal.
   if head -c 512 "$file" | grep -q '<forticlient_configuration'; then
-    notify-send "VPN" "FortiClient config: NetworkManager can't import it."$'\n'"For RCC run ~/dotfiles/bootstrap/vpn-rcc.sh"
+    kitty --class float-general -e sh -c \
+      '"$1" "$2"; echo; read -n 1 -s -r -p "Press any key to close…"' \
+      _ "${DOTFILES:-$HOME/dotfiles}/bootstrap/vpn-forticlient.sh" "$file"
     return
   fi
 
@@ -89,7 +94,7 @@ mapfile -t entries < <(
       done
 )
 
-act_import="󰋺 Import config (.conf / .ovpn)"
+act_import="󰋺 Import config (WireGuard / OpenVPN / FortiClient)"
 act_proton="󰇧 Open Proton VPN app"
 act_editor="󰒓 Edit connections"
 
