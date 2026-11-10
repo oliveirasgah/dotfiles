@@ -117,6 +117,21 @@ install_sddm_weston() {
 	sudo install -Dm644 "$src" "$dest"
 }
 
+install_nm_dispatcher() {
+	# Blocks IPv6 while an IPv4-only VPN is up so it can't leak around the
+	# tunnel. Dispatcher scripts must be root-owned and not group/world
+	# writable, so this is copied rather than stowed.
+	local src="$DOTFILES/bootstrap/networkmanager/90-vpn-ipv6-block"
+	local dest=/etc/NetworkManager/dispatcher.d/90-vpn-ipv6-block
+	[[ -f $src ]] || { warn "Missing $src; skipping NM dispatcher"; return; }
+	if [[ -f $dest ]] && cmp -s "$src" "$dest"; then
+		log "NM VPN IPv6 dispatcher already in place"
+		return
+	fi
+	log "Installing NM dispatcher (block IPv6 while an IPv4-only VPN is up)"
+	sudo install -Dm755 -o root -g root "$src" "$dest"
+}
+
 ensure_login_shell_zsh() {
 	local zsh_path=/usr/bin/zsh
 	if [[ ! -x $zsh_path ]]; then
@@ -163,6 +178,7 @@ main() {
 	theme_gtk
 	install_sddm_config
 	install_sddm_weston
+	install_nm_dispatcher
 	ensure_login_shell_zsh
 	print_post_install
 }

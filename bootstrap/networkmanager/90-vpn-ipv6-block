@@ -1,0 +1,42 @@
+#!/bin/sh
+# NetworkManager dispatcher: while a VPN without IPv6 of its own is up, block
+# IPv6 internet traffic so it can't bypass the tunnel (the ISP's RA default
+# route would otherwise keep carrying it). VPNs that bring IPv6 (e.g. Proton
+# WireGuard) are left alone.
+#
+# Installed to /etc/NetworkManager/dispatcher.d/ by bootstrap/install.sh;
+# dispatcher scripts must be root-owned, so stow can't link this one.
+#
+# The block is a "prohibit" default route at metric 1: it beats the RA route
+# (metric 100), apps get an immediate error and fall back to IPv4, and the
+# more specific LAN / link-local / Docker routes keep working. proto 222
+# tags the route as ours.
+
+case "$2" in
+	up|down|vpn-up|vpn-down) ;;
+	*) exit 0 ;;
+esac
+
+PROTO=222
+
+# Succeeds if any active VPN / WireGuard connection has no global IPv6.
+ipv4_only_vpn_active() {
+	nmcli -g TYPE,UUID connection show --active 2>/dev/null \
+		| while IFS=: read -r type uuid; do
+			case "$type" in
+				vpn|wireguard) ;;
+				*) continue ;;
+			esac
+			nmcli -g IP6.ADDRESS connection show uuid "$uuid" 2>/dev/null \
+				| sed 's/ | /\n/g; s/\\:/:/g' \
+				| grep -qvE '^(fe80:|$)' \
+				|| echo "$uuid"
+		done | grep -q .
+}
+
+if ipv4_only_vpn_active; then
+	ip -6 route replace prohibit default metric 1 proto "$PROTO"
+else
+	ip -6 route del prohibit default metric 1 proto "$PROTO" 2>/dev/null
+fi
+exit 0
