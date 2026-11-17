@@ -89,6 +89,15 @@ hl.config({
         disable_splash_rendering = true,
     },
 
+    render = {
+        -- Never flip the monitor into HDR when something goes fullscreen
+        -- (real fullscreen video or Super+F fake fullscreen). Default is 1.
+        cm_auto_hdr       = 0,
+        -- Don't tell the monitor the content type (video/game); some panels
+        -- switch picture profiles on it, which looks like an HDR switch.
+        send_content_type = false,
+    },
+
     cursor = {
         no_hardware_cursors = 1,
         -- Start the cursor in the middle of DP-1 (workspace 1's monitor).
