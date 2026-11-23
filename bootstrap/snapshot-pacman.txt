@@ -5,8 +5,11 @@ android-tools
 anki
 base
 base-devel
+bind
 blueprint-compiler
 btop
+coolercontrol
+coolercontrold
 discord
 docker
 docker-compose
@@ -14,6 +17,7 @@ dolphin-emu
 doxygen
 dpkg
 duckdb
+edk2-ovmf
 efibootmgr
 evtest
 eza
@@ -48,6 +52,7 @@ hyprland-qt-support
 hyprlang
 hyprlock
 hyprpaper
+hyprpolkitagent
 hyprshot
 hyprutils
 imagemagick
@@ -55,10 +60,12 @@ imv
 inotify-tools
 intel-ucode
 jdk-openjdk
+jdk21-openjdk
 kitty
 krita
 less
 lib32-gamemode
+libayatana-appindicator
 libgee
 libliftoff
 libqalculate
@@ -124,6 +131,7 @@ pipewire-audio
 pipewire-pulse
 proton-vpn-gtk-app
 python-pip
+qemu-desktop
 rbenv
 reaper
 retroarch
@@ -135,12 +143,15 @@ rofi
 rsync
 ruby-build
 rust
+samba
 satty
 sddm
+spice-gtk
 squashfs-tools
 stow
 strace
 sudo
+swtpm
 systemd-resolvconf
 telegram-desktop
 thunar

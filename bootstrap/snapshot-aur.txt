@@ -9,6 +9,8 @@ hyprland-protocols-git
 hyprwayland-scanner-git
 jmtpfs
 lib32-sdl2-compat
+libreswan
+networkmanager-libreswan
 oh-my-posh
 oh-my-zsh-git
 papirus-folders-catppuccin-git
@@ -22,6 +24,7 @@ perl-text-layout
 perl-xs-parse-sublike
 pixie-sddm-git
 python-pip-system-certs
+quickemu
 rar
 rofi-power-menu
 simple-mtpfs
