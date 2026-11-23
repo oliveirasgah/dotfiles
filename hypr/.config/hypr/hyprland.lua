@@ -347,7 +347,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("fcitx5 -d --replace")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
-    hl.exec_cmd("hyprpaper")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprpaper.bash")
     hl.exec_cmd("mako")
     -- Polkit agent for GUI password prompts (ships as a user service).
