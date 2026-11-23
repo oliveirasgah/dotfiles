@@ -33,7 +33,7 @@ The script is idempotent — re-running it is a no-op once everything is in plac
    ```
 2. **Enable system services**:
    ```sh
-   sudo systemctl enable --now sddm docker
+   sudo systemctl enable --now sddm docker coolercontrold
    systemctl --user enable --now pipewire pipewire-pulse wireplumber
    ```
    The login manager is [SDDM](https://github.com/sddm/sddm) with the [pixie](https://github.com/xCaptaiN09/pixie-sddm) theme; `bootstrap/install.sh` deploys `bootstrap/sddm.conf.d/zz-pixie.conf` to `/etc/sddm.conf.d/` (selects the theme and the Bibata cursor).
@@ -66,9 +66,35 @@ It installs `jdk21-openjdk`, clones Flutter pinned to the given tag into `~/deve
 | `btop`     | `~/.config/btop/` |
 | `fastfetch`| `~/.config/fastfetch/` |
 | `gtk`      | `~/.gtkrc-2.0`, `~/.config/gtk-3.0/`, `~/.config/gtk-4.0/` |
+| `fcitx5`   | `~/.config/fcitx5/` (input method profile + UI; Japanese via mozc) |
+| `environment` | `~/.config/environment.d/shader-cache.conf` (session env vars) |
+| `wireplumber` | `~/.config/wireplumber/wireplumber.conf.d/51-default-sink.conf` (default audio sink: GPU DP-1 output) |
+| `xdg`      | `~/.config/mimeapps.list`, `~/.config/user-dirs.dirs` |
+| `thunar`   | `~/.config/Thunar/` (keybindings, custom actions) |
+
+Some apps (fcitx5, Thunar, anything that edits `mimeapps.list`) save their config by writing a new file and renaming it over the old one, which replaces the stow symlink with a regular file. After changing settings in those apps, check `git status` in `~/dotfiles`; if nothing changed, copy the live file back into the package and re-run `stow --restow <pkg>`.
 
 Add only what you want: `cd ~/dotfiles && stow zsh git nvim`.
 Remove a package: `stow -D zsh`.
+
+## System configs (copied, not stowed)
+
+`bootstrap/install.sh` copies these into `/etc` because they must be root-owned:
+
+| Source | Destination | Purpose |
+|---|---|---|
+| `bootstrap/sddm.conf.d/zz-pixie.conf` | `/etc/sddm.conf.d/` | SDDM theme + cursor |
+| `bootstrap/sddm/weston.ini` | `/etc/sddm/` | SDDM Wayland greeter layout |
+| `bootstrap/networkmanager/90-vpn-ipv6-block` | `/etc/NetworkManager/dispatcher.d/` | block IPv6 while an IPv4-only VPN is up |
+| `bootstrap/coolercontrol/*` | `/etc/coolercontrol/` | CoolerControl fan curves, profiles, modes, UI settings. Device UIDs are machine-specific. The daemon's `.passwd`, `.tokens` and TLS key/cert are **not** tracked. |
+
+To refresh the CoolerControl copy after changing fan curves:
+
+```sh
+for f in config.toml modes.json alerts.json config-ui.json calibrations.json; do
+  cp /etc/coolercontrol/$f ~/dotfiles/bootstrap/coolercontrol/
+done
+```
 
 ## Snapshot vs install lists
 

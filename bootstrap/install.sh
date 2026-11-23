@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako rofi ohmyposh btop fastfetch gtk)
+STOW_PACKAGES=(zsh git nvim kitty hypr waybar mako rofi ohmyposh btop fastfetch gtk fcitx5 environment wireplumber xdg thunar)
 
 GTK_THEME=catppuccin-mocha-blue-standard+default
 PAPIRUS_FOLDER_COLOR=cat-mocha-blue
@@ -132,6 +132,34 @@ install_nm_dispatcher() {
 	sudo install -Dm755 -o root -g root "$src" "$dest"
 }
 
+install_coolercontrol_config() {
+	# Fan curves, profiles, modes and UI settings. Device UIDs in config.toml are
+	# hardware-specific, so this only applies cleanly to the same machine.
+	# The daemon's secrets (.passwd, .tokens, coolercontrol.key/.crt) are not
+	# tracked; coolercontrold regenerates them on first start.
+	local src="$DOTFILES/bootstrap/coolercontrol"
+	local dest=/etc/coolercontrol
+	command -v coolercontrold &>/dev/null || { warn "coolercontrold not installed; skipping CoolerControl config"; return; }
+	[[ -d $src ]] || { warn "Missing $src; skipping CoolerControl config"; return; }
+	local f changed=()
+	for f in "$src"/*; do
+		cmp -s "$f" "$dest/$(basename "$f")" || changed+=("$f")
+	done
+	if [[ ${#changed[@]} -eq 0 ]]; then
+		log "CoolerControl config already in place"
+		return
+	fi
+	log "Installing CoolerControl config (${#changed[@]} file(s))"
+	# The daemon rewrites config.toml on exit, so stop it before replacing files.
+	local was_active=0
+	systemctl is-active --quiet coolercontrold && was_active=1 && sudo systemctl stop coolercontrold
+	for f in "${changed[@]}"; do
+		sudo install -Dm644 "$f" "$dest/$(basename "$f")"
+	done
+	[[ $was_active -eq 1 ]] && sudo systemctl start coolercontrold
+	return 0
+}
+
 ensure_login_shell_zsh() {
 	local zsh_path=/usr/bin/zsh
 	if [[ ! -x $zsh_path ]]; then
@@ -159,7 +187,7 @@ print_post_install() {
 	       \$EDITOR ~/.gitconfig.local
 
 	  2. Enable services:
-	       sudo systemctl enable --now sddm docker
+	       sudo systemctl enable --now sddm docker coolercontrold
 	       systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 	  3. Log out and back in to start a Hyprland session via SDDM.
@@ -179,6 +207,7 @@ main() {
 	install_sddm_config
 	install_sddm_weston
 	install_nm_dispatcher
+	install_coolercontrol_config
 	ensure_login_shell_zsh
 	print_post_install
 }

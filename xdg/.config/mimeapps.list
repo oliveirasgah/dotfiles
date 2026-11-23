@@ -1,0 +1,23 @@
+[Default Applications]
+text/plain=org.gnome.gedit.desktop
+text/html=vivaldi-stable.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+image/png=imv.desktop
+image/jpeg=imv.desktop
+video/x-matroska=mpv.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+text/csv=libreoffice-calc.desktop
+
+[Added Associations]
+text/plain=org.gnome.gedit.desktop;
+image/png=vivaldi-stable.desktop;imv-dir.desktop;firefox.desktop;imv.desktop;
+image/jpeg=imv.desktop;
+video/x-matroska=mpv.desktop;
+text/csv=libreoffice-calc.desktop;
+audio/mpeg=vlc.desktop;
+image/svg+xml=vivaldi-stable.desktop;imv.desktop;

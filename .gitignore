@@ -1,6 +1,8 @@
 *.local
 !/zsh/.local/
 .gitconfig.local
+# Runtime state written into folded stow dirs on a fresh machine
+/fcitx5/.config/fcitx5/conf/cached_layouts
 *.swp
 *.swo
 *~
